@@ -1,1 +1,5 @@
-# FluencyPath-
+# FluencyPath
+
+# Funcionalidades
+
+# Desenvolvedores
