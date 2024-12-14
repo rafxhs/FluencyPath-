@@ -2,6 +2,6 @@
 
 # Funcionalidades
 
-#Ferramentas
+# Ferramentas utilizadas
 
 # Desenvolvedores
