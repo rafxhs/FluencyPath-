@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('books', function (Blueprint $table) {
-            $table->enum('type', ['y', 'n'])->default('n');
+        Schema::table('users', function (Blueprint $table) {
+            $table->enum('is_admin', ['y', 'n'])->default('n');
         });
     }
 
@@ -21,7 +21,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('books', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('is_admin');
         });
     }
