@@ -24,6 +24,7 @@
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
+
         <!-- Remember Me -->
         <div class="block mt-4">
             <label for="remember_me" class="inline-flex items-center">
@@ -42,6 +43,14 @@
             <x-primary-button class="ms-3">
                 {{ __('Log in') }}
             </x-primary-button>
+
         </div>
+
+        <div class="block mt-4">
+                    <a href=" {{ route('redirect.google') }} ">
+                        <img src="https://cdn-icons-png.flaticon.com/256/2875/2875404.png" alt="login with google" class="w-5 h-auto">
+                    </a>
+
+            </div>
     </form>
 </x-guest-layout>
