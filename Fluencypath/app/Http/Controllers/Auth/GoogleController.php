@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class GoogleController extends Controller
 {
@@ -18,6 +19,7 @@ class GoogleController extends Controller
     {
 
 
+             $user = Socialite::driver('google')->stateless()->user();
             $user = Socialite::driver('google')->user();
             $findUser = User::where('google_id', $user->id)->first();
 
@@ -30,13 +32,13 @@ class GoogleController extends Controller
               'name' => $user->name,
               'email' => $user->email,
               'google_id' => $user->id,
-              'password' => env('GOOGLE_PASSWORD'),
+             'password' => bcrypt(Str::random(16))
             ]);
             Auth::login($findUser);
           }
 
 
-            return redirect()->route('home');
+            return redirect()->route('dashboard');
 
     }
 }

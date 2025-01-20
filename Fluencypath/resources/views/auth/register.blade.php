@@ -47,6 +47,18 @@
             <x-primary-button class="ms-4">
                 {{ __('Register') }}
             </x-primary-button>
+
+
+
+
         </div>
+
+        <div class="block mt-4">
+                    <a href=" {{ route('redirect.google') }} ">
+                        <img src="https://cdn-icons-png.flaticon.com/256/2875/2875404.png" alt="login with google" class="w-5 h-auto">
+                    </a>
+
+            </div>
+
     </form>
 </x-guest-layout>
