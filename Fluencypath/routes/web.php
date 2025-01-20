@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TextController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -15,6 +16,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/texts', [TextController::class, 'index'])->name('texts.index');
+    Route::get('/texts/create', [TextController::class, 'create'])->name('texts.create');
+    Route::post('/texts', [TextController::class, 'store'])->name('texts.store');
+    Route::get('/texts/{id}', [TextController::class, 'show'])->name('texts.show');
+    Route::delete('/texts/{id}', [TextController::class, 'destroy'])->name('texts.destroy');
+
 });
 
 require __DIR__.'/auth.php';
