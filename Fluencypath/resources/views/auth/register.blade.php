@@ -53,12 +53,13 @@
 
         </div>
 
-        <div class="block mt-4">
-                    <a href=" {{ route('redirect.google') }} ">
-                        <img src="https://cdn-icons-png.flaticon.com/256/2875/2875404.png" alt="login with google" class="w-5 h-auto">
-                    </a>
-
-            </div>
-
     </form>
+    <div class="mt-6 space-y-4">
+        <a href=" {{ route('redirect.google') }} ">
+            <button class="w-full flex items-center justify-center border-2 border-gray-300 text-gray-600 py-2 rounded-full shadow-md hover:bg-gray-50 transition duration-200">
+
+                <img src="https://cdn-icons-png.flaticon.com/256/2875/2875404.png" alt="Google logo" class="w-5 h-auto"> continuar com o Google
+            </button>
+        </a>
+        </div>
 </x-guest-layout>

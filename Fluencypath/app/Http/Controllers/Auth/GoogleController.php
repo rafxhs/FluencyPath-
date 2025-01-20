@@ -18,6 +18,7 @@ class GoogleController extends Controller
     public function handleGoogleCallback(Request $request)
     {
 
+        try {
 
              $user = Socialite::driver('google')->stateless()->user();
             $user = Socialite::driver('google')->user();
@@ -40,5 +41,9 @@ class GoogleController extends Controller
 
             return redirect()->route('dashboard');
 
+        } catch (\Exception $e) {
+            return redirect('/login')->withErrors(['msg' => "Não foi possível fazer login com o Google, tente novamente."]);
+
+        }
     }
 }
