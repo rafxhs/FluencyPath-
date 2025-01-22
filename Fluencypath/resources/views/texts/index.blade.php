@@ -1,32 +1,44 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <h1 class="my-4">Lista de Textos</h1>
+<div class="container" style="margin-left: 50px;">
+    <h1 class="my-4" style=" font-size:larger">Textos</h1>
 
-    @foreach ($texts as $text)
+    <a href="{{ route('texts.create') }}" class="btn btn-danger btn-sm bg-blue-300 text-white p-2 rounded hover:bg-blue-400">Adicionar Texto</a>
+    
+   @foreach ($texts as $text)
+        <div class="card" style="border: 1px solid #ccc; padding: 15px; margin: 15px; width: 50%">
+            <h3>{{ $text->title }}</h3>
+            <p>
+            Tags:
+            @php
+                $tags = json_decode($text->tag, true);
+            @endphp
+            @if (is_array($tags))
+                @foreach ($tags as $tag)
+                    <span style="display: inline-block; background-color: #e0e0e0; color: #333; padding: 5px 10px; margin: 5px; border-radius: 5px;">
+                        {{ $tag['value'] }}
+                    </span>
+                @endforeach
+            @else
+                <span>tags não correspondente (MUDAR ISSO pra quando não tiver na lista, nem guradar no banco)</span>
+            @endif
+        </p>
+            <p>{{ Str::limit($text->content, 30, '...') }}</p>  <!--Limita até 25 caracteres do texto -->
+        <a href="{{ route('texts.show', $text->id) }}" style="text-decoration: none; color: blue;">Ver mais</a>
+    </div>
+
     <div>
-        <tr>
-            <td>Titulo:{{$text->title}}</td> <br>
-            <td>{{$text->content }}</td> <br>
-            <td>Tags:{{$text->tag }}</td> <br>
-       
+        <form action="{{ route('texts.destroy', $text->id) }}" method="POST" style="display: inline;">
+            @csrf
+            @method('DELETE')
+            <button onclick="return confirm('Deseja excluir este texto?')" class="btn btn-danger btn-sm bg-red-300 text-white p-2 rounded hover:bg-red-400" >
+            <i class="bi bi-trash"></i> Deletar
+            </button>
+        </form>
 
-            <form action="{{ route('texts.destroy', $text->id) }}" method="POST" style="display: inline;">
-                @csrf
-                @method('DELETE')
-                <button class="btn btn-danger btn-sm" onclick="return confirm('Deseja excluir este texto?')">
-                <i class="bi bi-trash"></i> Deletar
-                </button>
-            </form>
-
-            <a href="{{ route('texts.edit', $text->id) }}">Edit</a>
-
-        <tr>
+        <a href="{{ route('texts.edit', $text->id) }}" class="bg-yellow-300 text-white p-2 rounded hover:bg-yellow-600 " >Editar</a>
     </div>
     @endforeach
-
-    <a href="{{ route('texts.create') }}" class="btn btn-secondary">Criar</a>
-
 </div>
 @endsection

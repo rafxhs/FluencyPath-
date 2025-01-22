@@ -74,8 +74,8 @@ class TextController extends Controller
     public function show($id)
     {
         // $text = Text::with('audio')->findOrFail($id);
-        $texts = Text::all();
-        return view('texts.show', compact('text'));
+        $texts = Text::findOrFail($id);
+        return view('texts.show', compact('texts'));
     }
 
     public function destroy($id)
