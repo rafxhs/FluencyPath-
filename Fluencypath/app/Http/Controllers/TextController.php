@@ -47,6 +47,29 @@ class TextController extends Controller
         return redirect()->route('texts.index')->with('success', 'Text and audio uploaded successfully!');
     }
 
+    public function edit($id)
+    {
+        $text = Text::findOrFail($id);
+        return view('texts.edit', compact('text'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'content' => 'required|string',
+            'tag' => 'required|string|max:255',
+        ]);
+
+        $text = Text::findOrFail($id);
+        $text->update([
+            'title' => $request->input('title'),
+            'content' => $request->input('content'),
+            'tag' => $request->input('tag'),
+        ]);
+
+        return redirect()->route('texts.index')->with('success', 'Text and audio updated successfully!');
+    }
 
     public function show($id)
     {

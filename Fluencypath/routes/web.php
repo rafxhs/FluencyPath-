@@ -22,6 +22,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/texts', [TextController::class, 'store'])->name('texts.store');
     Route::get('/texts/{id}', [TextController::class, 'show'])->name('texts.show');
     Route::delete('/texts/{id}', [TextController::class, 'destroy'])->name('texts.destroy');
+    Route::get('/texts/{id}/edit', [TextController::class, 'edit'])->name('texts.edit');
+    Route::put('/texts/{id}', [TextController::class, 'update'])->name('texts.update');
+ 
 
 });
 

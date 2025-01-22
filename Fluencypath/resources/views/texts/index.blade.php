@@ -20,6 +20,8 @@
                 </button>
             </form>
 
+            <a href="{{ route('texts.edit', $text->id) }}">Edit</a>
+
         <tr>
     </div>
     @endforeach
