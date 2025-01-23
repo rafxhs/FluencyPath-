@@ -5,8 +5,8 @@
     <h1 class="my-4" style=" font-size:larger">Textos</h1>
 
     <a href="{{ route('texts.create') }}" class="btn btn-danger btn-sm bg-blue-300 text-white p-2 rounded hover:bg-blue-400">Adicionar Texto</a>
-    
-   @foreach ($texts as $text)
+
+    @foreach ($texts as $text)
         <div class="card" style="border: 1px solid #ccc; padding: 15px; margin: 15px; width: 50%">
             <h3>{{ $text->title }}</h3>
             <p>
@@ -26,7 +26,25 @@
         </p>
             <p>{{ Str::limit($text->content, 30, '...') }}</p>  <!--Limita até 25 caracteres do texto -->
         <a href="{{ route('texts.show', $text->id) }}" style="text-decoration: none; color: blue;">Ver mais</a>
+
+       <!-- Botão de Favoritar -->
+<button
+    class="favorite-btn flex items-center space-x-2 mt-4"
+    data-text-id="{{ $text->id }}"
+    data-favorited="{{ Auth::user()->favorites()->where('text_id', $text->id)->exists() ? 'true' : 'false' }}"
+>
+    <!-- Ícone do coração -->
+    <span class="favorite-icon text-2xl">
+        {{ Auth::user()->favorites()->where('text_id', $text->id)->exists() ? '❤️' : '🤍' }}
+    </span>
+    <!-- Contador de favoritos -->
+    <span class="favorites-count text-gray-600 text-lg">
+        {{ $text->favorites_count }}
+    </span>
+</button>
     </div>
+
+
 
     <div>
         <form action="{{ route('texts.destroy', $text->id) }}" method="POST" style="display: inline;">

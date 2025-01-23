@@ -11,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('audio', function (Blueprint $table) {
+        Schema::create('favorites', function (Blueprint $table) {
             $table->id();
-            $table->binary('file');
-            $table->unsignedBigInteger('idText');
-            $table->string('title', 255);
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('text_id')->constrained('texts')->onDelete('cascade');
             $table->timestamps();
-
-            $table->foreign('idText')->references('id')->on('texts')->onDelete('cascade');
         });
     }
 
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('audio');
+        Schema::dropIfExists('favorites');
     }
 };

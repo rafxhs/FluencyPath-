@@ -23,6 +23,13 @@ class User extends Authenticatable
         'password',
     ];
 
+
+    public function favorites()
+    {
+        return $this->belongsToMany(Text::class, 'favorites', 'user_id', 'text_id');
+
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -45,5 +52,4 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-
 }
