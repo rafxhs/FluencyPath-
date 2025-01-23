@@ -31,7 +31,6 @@
 
                             <div>
                                 <a class="nav-link" href="{{ route('favorites.index') }}">
-                                    ❤️
                                     <div>Meus Favoritos</div>
                                 </a>
                             </div>
