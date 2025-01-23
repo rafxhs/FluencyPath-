@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TextController;
 use App\Http\Controllers\FavoriteController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\GoogleController;
+
 
 
 Route::get('/', function () {
@@ -37,6 +39,7 @@ Route::middleware('auth')->group(function () {
 
 });
 
-
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('redirect.google');
+Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
 require __DIR__.'/auth.php';
