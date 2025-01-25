@@ -9,8 +9,8 @@ class TextController extends Controller
 {
     public function index()
     {
-        // $texts = Text::with('audio')->get();
-        $texts = Text::all();
+        $texts = Text::with('audio')->get();
+        // $texts = Text::all();
         return view('texts.index', compact('texts'));
     }
 
@@ -25,7 +25,7 @@ class TextController extends Controller
             'title' => 'required|string|max:255',
             'content' => 'required|string',
             'tag' => 'required|string|max:255',
-            // 'audio_file' => 'required|file',
+            'audio_file' => 'required|file',
         ]);
 
         $text = Text::create([
@@ -35,14 +35,14 @@ class TextController extends Controller
             'idUser' => auth()->id(),
         ]);
 
-        // $audioFile = $request->file('audio_file');
-        // $audioData = file_get_contents($audioFile);
+        $audioFile = $request->file('audio_file');
+        $audioData = file_get_contents($audioFile);
 
-        // Audio::create([
-        //     'file' => $audioData,
-        //     'idText' => $text->id,
-        //     'title' => $audioFile->getClientOriginalName(),
-        // ]);
+        Audio::create([
+            'file' => $audioData,
+            'idText' => $text->id,
+            'title' => $audioFile->getClientOriginalName(),
+        ]);
 
         return redirect()->route('texts.index')->with('success', 'Text and audio uploaded successfully!');
     }
@@ -73,14 +73,15 @@ class TextController extends Controller
 
     public function show($id)
     {
-        // $text = Text::with('audio')->findOrFail($id);
-        $texts = Text::findOrFail($id);
+        $text = Text::with('audio')->findOrFail($id);
+        // $texts = Text::findOrFail($id);
         return view('texts.show', compact('texts'));
     }
 
     public function destroy($id)
     {
-        $text = Text::findOrFail($id);
+        $text = Text::with('audio')->findOrFail($id);
+        // $texts = Text::findOrFail($id);
         $text->delete();
 
         return redirect()->route('texts.index')->with('success', 'Text and audio deleted successfully!');

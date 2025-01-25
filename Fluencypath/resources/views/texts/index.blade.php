@@ -25,6 +25,11 @@
             @endif
         </p>
             <p>{{ Str::limit($text->content, 30, '...') }}</p>  <!--Limita até 25 caracteres do texto -->
+            @if ($text->audio_path)
+            <audio controls>
+                <source src="{{ asset('storage/' . $text->audio_path) }}" type="audio/mpeg">
+            </audio>
+    @endif
         <a href="{{ route('texts.show', $text->id) }}" style="text-decoration: none; color: blue;">Ver mais</a>
     </div>
 

@@ -32,6 +32,11 @@
                     required 
                     class="border border-gray-300 p-2 rounded">
 
+                
+                <label for="audio">Áudio:</label>
+                <input type="file" name="audio" id="audio" accept=".mp3,.wav">
+        
+
                 <button type="submit" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
                     Adicionar
                 </button>
