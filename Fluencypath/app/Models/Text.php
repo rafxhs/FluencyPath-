@@ -27,6 +27,11 @@ class Text extends Model
         return $this->belongsToMany(User::class, 'favorites', 'text_id', 'user_id');
     }
 
+    public function audio()
+{
+    return $this->hasOne(Audio::class, 'idText');
+}
+
     /**
      * Eventos do modelo para inicializar ou ajustar o campo `favorites_count`
      */

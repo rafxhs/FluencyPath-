@@ -8,6 +8,10 @@
         <h2>{{ $texts->title }}</h2>
         <p><strong>Tags:</strong> {{ $texts->tag }}</p>
         <p>{{ $texts->content }}</p>
+        <audio controls>
+            <source src="{{ Storage::url($texts->audio->file_path) }}" type="audio/{{ pathinfo($texts->audio->file_path, PATHINFO_EXTENSION) }}">
+            Seu navegador não suporta o elemento de áudio.
+        </audio>
         <a href="{{ route('texts.index') }}" style="text-decoration: none; color: blue;">Back to List</a>
     </div>
 
