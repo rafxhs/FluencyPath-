@@ -20,7 +20,7 @@
 
                 <label for="content" class="text-sm font-semibold">Seu texto</label>
                 <textarea 
-                    name="content" 
+                    name="content"
                     required 
                     class="border border-gray-300 p-2 rounded w-96 h-60"></textarea>
 
