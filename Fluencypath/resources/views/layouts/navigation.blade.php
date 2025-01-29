@@ -44,6 +44,19 @@
                     </x-slot>
 
                     <x-slot name="content">
+
+                        <x-dropdown-link :href="route('profile.show', ['id' => Auth::user()->id])">
+                            <div class="flex flex-row">
+                                <img src="{{URL::asset('images/woman-photo1.jpeg')}}" alt="Mulher" class="w-14 h-14 rounded-full object-cover">
+                                <div class="flex flex-col">
+                                    <span>{{ Auth::user()->name }}</span>
+                                    <span>{{ Auth::user()->email}}</span>
+                                </div>
+                            </div>
+                        </x-dropdown-link>
+
+                        <hr>
+
                         <x-dropdown-link :href="route('profile.show', ['id' => Auth::user()->id])">
                             {{ __('Meu Perfil') }}
                         </x-dropdown-link>
@@ -59,6 +72,8 @@
                         <x-dropdown-link :href="route('profile.edit')">
                              Configurações
                         </x-dropdown-link>
+
+                        <hr>
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
