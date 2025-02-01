@@ -13,12 +13,17 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('Home') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('texts.index')" :active="request()->routeIs('texts.index')">
-                        {{ __('Text') }}
+                        {{ __('Textos') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('about.index')" :active="request()->routeIs('about.index')">
+                        {{ __('Quem somos') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -28,12 +33,6 @@
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-
-                            <div>
-                                <a class="nav-link" href="{{ route('favorites.index') }}">
-                                    <div>Meus Favoritos</div>
-                                </a>
-                            </div>
                             <div>{{ Auth::user()->name }}</div>
 
                             <div class="ms-1">
@@ -45,13 +44,38 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
+
+                        <x-dropdown-link :href="route('profile.show', ['id' => Auth::user()->id])">
+                            <div class="flex flex-row">
+                                <img src="{{ Auth::user()->profilePicture ? asset('storage/' . Auth::user()->profilePicture->path) : asset('images/default-profile.png') }}"
+                                    alt="Foto de Perfil"
+                                    class="w-14 h-14 rounded-full object-cover">
+                                <div class="flex flex-col">
+                                    <span>{{ Auth::user()->name }}</span>
+                                    <span>{{ Auth::user()->email}}</span>
+                                </div>
+                            </div>
+                        </x-dropdown-link>
+
+                        <hr>
+
+                        <x-dropdown-link :href="route('profile.show', ['id' => Auth::user()->id])">
+                            {{ __('Meu Perfil') }}
+                        </x-dropdown-link>
+
+                        <x-dropdown-link :href="route('texts.index')">
+                            Meus Textos
                         </x-dropdown-link>
 
                         <x-dropdown-link :href="route('favorites.index')">
-                             Meus Favoritos
+                            Meus Favoritos
                         </x-dropdown-link>
+
+                        <x-dropdown-link :href="route('profile.edit')">
+                            Configurações
+                        </x-dropdown-link>
+
+                        <hr>
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
@@ -60,7 +84,7 @@
                             <x-dropdown-link :href="route('logout')"
                                 onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('Sair') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>

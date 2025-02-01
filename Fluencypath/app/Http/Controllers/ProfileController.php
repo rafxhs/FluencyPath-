@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\User;
+use App\Models\ProfilePicture;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class ProfileController extends Controller
@@ -26,6 +29,8 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
+        $user = $request->user();
+        
         $request->user()->fill($request->validated());
 
         if ($request->user()->isDirty('email')) {
@@ -34,7 +39,27 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
+        if ($request->hasFile('profile_picture')){
+            $path = $request->file('profile_picture')->store('profile_pictures', 'public');
+
+            if($user->profilePicture){
+                Storage::disk('public')->delete($user->profilePicture->path);
+                $user->profilePicture->update(['path' => $path]);
+            } else {
+                ProfilePicture::create([
+                    'user_id' => $user->id,
+                    'path' => $path,
+                ]);
+            }
+        }
+
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
+    }
+
+    public function show($id)
+    {
+        $user = User::findOrFail($id);
+        return view('profile.show', compact('user'));
     }
 
     /**
@@ -47,6 +72,11 @@ class ProfileController extends Controller
         ]);
 
         $user = $request->user();
+
+        if ($user->profilePicture){
+            Storage::disk('public')->delete($user->profilePicture->path);
+            $user->profilePicture->delete();
+        }
 
         Auth::logout();
 

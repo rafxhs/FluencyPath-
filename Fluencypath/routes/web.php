@@ -9,6 +9,9 @@ use App\Http\Controllers\Auth\GoogleController;
 
 
 Route::get('/', function () {
+    if (auth()->check()) {
+        return redirect()->route('dashboard');
+    }
     return view('welcome');
 });
 
@@ -19,6 +22,7 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
@@ -38,6 +42,10 @@ Route::middleware('auth')->group(function () {
 
 
 });
+
+Route::get('/about', function () {
+    return view('about.index');
+})->name('about.index');
 
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('redirect.google');
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
