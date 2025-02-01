@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('audio', function (Blueprint $table) {
             $table->id();
-            $table->binary('file');
+            $table->string('file_path');
             $table->unsignedBigInteger('idText');
             $table->string('title', 255);
             $table->timestamps();

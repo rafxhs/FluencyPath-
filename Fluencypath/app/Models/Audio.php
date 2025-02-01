@@ -11,7 +11,7 @@ class Audio extends Model
     protected $table = 'audio';
 
     protected $fillable = [
-        'file',
+        'file_path',
         'idText',
         'title',
     ];
