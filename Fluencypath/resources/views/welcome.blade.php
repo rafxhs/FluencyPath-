@@ -18,7 +18,7 @@
 <body class="font-sans antialiased flex flex-col min-h-screen">
     <div class="flex-grow">
         @if (Route::has('login'))
-        <nav class="bg-white border-b border-gray-100">
+        <nav class="flex flex-row bg-white border-b border-gray-100">
             @auth
             <a
                 href="{{ url('/dashboard') }}"
@@ -30,14 +30,15 @@
                 <div class="flex justify-between h-16">
                     <div class="flex">
                         <!-- Logo -->
-                        <div class="shrink-0 flex items-center">
-                            <a href="{{ route('dashboard') }}">
-                                <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
-                            </a>
-                        </div>
+                       
 
                         @else
                         <!-- Navigation Links -->
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <x-nav-link :href="route('about.index')" :active="request()->routeIs('about.index')">
+                                {{ __('Quem somos') }}
+                            </x-nav-link>
+                        </div>
                         <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                             <a
                                 href="{{ route('login') }}"
@@ -76,10 +77,10 @@
                                     </p>
                                 </div>
                                 <div class="py-10 mt-10">
-                                    <div class="bg-cyan-600 rounded-md px-6 py-4 hover:bg-cyan-500 focus:bg-cyan-700">
+                                    <div class="bg-primary-700 rounded-md px-6 py-4 hover:bg-primary-400 focus:bg-primary-800">
                                         <a
                                             href="{{ route('register') }}"
-                                            class="text-white">
+                                            class="font-primary text-white">
                                             Comece Agora
                                         </a>
                                     </div>
