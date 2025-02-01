@@ -47,7 +47,9 @@
 
                         <x-dropdown-link :href="route('profile.show', ['id' => Auth::user()->id])">
                             <div class="flex flex-row">
-                                <img src="{{URL::asset('images/woman-photo1.jpeg')}}" alt="Mulher" class="w-14 h-14 rounded-full object-cover">
+                                <img src="{{ Auth::user()->profilePicture ? asset('storage/' . Auth::user()->profilePicture->path) : asset('images/default-profile.png') }}"
+                                    alt="Foto de Perfil"
+                                    class="w-14 h-14 rounded-full object-cover">
                                 <div class="flex flex-col">
                                     <span>{{ Auth::user()->name }}</span>
                                     <span>{{ Auth::user()->email}}</span>
@@ -62,15 +64,15 @@
                         </x-dropdown-link>
 
                         <x-dropdown-link :href="route('texts.index')">
-                             Meus Textos
+                            Meus Textos
                         </x-dropdown-link>
 
                         <x-dropdown-link :href="route('favorites.index')">
-                             Meus Favoritos
+                            Meus Favoritos
                         </x-dropdown-link>
 
                         <x-dropdown-link :href="route('profile.edit')">
-                             Configurações
+                            Configurações
                         </x-dropdown-link>
 
                         <hr>
@@ -101,8 +103,8 @@
         </div>
     </div>
 
-     <!-- Responsive Navigation Menu -->
-     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+    <!-- Responsive Navigation Menu -->
+    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
