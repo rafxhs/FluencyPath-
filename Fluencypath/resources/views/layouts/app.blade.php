@@ -15,7 +15,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+        <div class="flex-grow min-h-screen bg-gray-100">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
@@ -30,7 +30,8 @@
             <!-- Page Content -->
             <main class="py-4">
             @yield('content')
-        </main>
+            </main>
         </div>
+        @include('layouts.footer')
     </body>
 </html>

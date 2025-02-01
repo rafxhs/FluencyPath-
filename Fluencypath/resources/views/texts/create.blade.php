@@ -2,40 +2,45 @@
 
 @section('content')
 <div class="container">
-    <h1 class="my-4" style="margin-left: 50px; font-size:larger">Adiconar Textos</h1>
+    <h1 class="my-4" style="margin-left: 50px; font-size:larger">Adicionar Textos</h1>
 
         <div class="flex p-10 ml-12">
-            <form 
-                action="{{ route('texts.store') }}" 
-                method="POST" 
+            <form
+                action="{{ route('texts.store') }}"
+                method="POST"
                 enctype="multipart/form-data"
                 class="flex flex-col space-y-4">
                 @csrf
                 <label for="title" class="text-sm font-semibold">Titulo do texto:</label>
-                <input 
-                    type="text" 
-                    name="title" 
-                    required 
+                <input
+                    type="text"
+                    name="title"
+                    required
                     class="border border-gray-300 p-2 rounded">
 
                 <label for="content" class="text-sm font-semibold">Seu texto</label>
-                <textarea 
+
+                <textarea
                     name="content"
-                    required 
+                    required
                     class="border border-gray-300 p-2 rounded w-96 h-60"></textarea>
 
                 <label for="tag" class="text-sm font-semibold">Tags:</label>
-                <input 
-                    id="tags-input" 
-                    name="tag" 
-                    placeholder="Add tags" 
-                    required 
+                <input
+                    id="tags-input"
+                    name="tag"
+                    placeholder="Add tags"
+                    required
                     class="border border-gray-300 p-2 rounded">
 
-                
-                <label for="audio">Áudio:</label>
-                <input type="file" name="audio" id="audio" accept=".mp3,.wav">
-        
+
+                    <label for="audio" class="text-sm font-semibold">Áudio:</label>
+                    <input
+                        type="file"
+                        name="audio"
+                        accept="audio/*"
+                        required
+                        class="border border-gray-300 p-2 rounded">
 
                 <button type="submit" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
                     Adicionar

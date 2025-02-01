@@ -21,7 +21,15 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'google_id',
     ];
+
+
+    public function favorites()
+    {
+        return $this->belongsToMany(Text::class, 'favorites', 'user_id', 'text_id');
+
+    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -46,4 +54,8 @@ class User extends Authenticatable
         ];
     }
 
+    public function profilePicture()
+    {
+        return $this->hasOne(ProfilePicture::class);
+    }
 }

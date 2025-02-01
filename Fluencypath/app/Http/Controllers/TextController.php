@@ -25,7 +25,7 @@ class TextController extends Controller
             'title' => 'required|string|max:255',
             'content' => 'required|string',
             'tag' => 'required|string|max:255',
-            'audio_file' => 'required|file',
+            'audio' => 'required|file|mimes:mp3,wav,ogg|max:409600',
         ]);
 
         $text = Text::create([
@@ -35,16 +35,19 @@ class TextController extends Controller
             'idUser' => auth()->id(),
         ]);
 
-        $audioFile = $request->file('audio_file');
-        $audioData = file_get_contents($audioFile);
+
+        $audioFile = $request->file('audio');
+        $filePath = $audioFile->store('audio', 'public'); // Salva em `storage/app/public/audio`
 
         Audio::create([
-            'file' => $audioData,
             'idText' => $text->id,
+            'file_path' => $filePath,
             'title' => $audioFile->getClientOriginalName(),
         ]);
 
-        return redirect()->route('texts.index')->with('success', 'Text and audio uploaded successfully!');
+        return redirect()->route('texts.index')->with('success', 'Texto e áudio adicionados com sucesso!');
+
+
     }
 
     public function edit($id)
@@ -73,15 +76,13 @@ class TextController extends Controller
 
     public function show($id)
     {
-        $text = Text::with('audio')->findOrFail($id);
-        // $texts = Text::findOrFail($id);
+        $texts = Text::with('audio')->findOrFail($id);
         return view('texts.show', compact('texts'));
     }
 
     public function destroy($id)
     {
         $text = Text::with('audio')->findOrFail($id);
-        // $texts = Text::findOrFail($id);
         $text->delete();
 
         return redirect()->route('texts.index')->with('success', 'Text and audio deleted successfully!');
