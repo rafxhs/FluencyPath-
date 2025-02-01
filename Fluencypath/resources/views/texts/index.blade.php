@@ -6,8 +6,9 @@
 
     <a href="{{ route('texts.create') }}" class="btn btn-danger btn-sm bg-blue-300 text-white p-2 rounded hover:bg-blue-400">Adicionar Texto</a>
 
+    <div style="display: flex;">
     @foreach ($texts as $text)
-        <div class="card" style="border: 1px solid #ccc; padding: 15px; margin: 15px; width: 50%">
+        <div class="card" style="border: 1px solid #ccc; padding: 15px; margin: 15px; width: 310px; height: 260px;">
             <h3>{{ $text->title }}</h3>
             <p>
             Tags:
@@ -24,29 +25,28 @@
                 <span>tags não correspondente (MUDAR ISSO pra quando não tiver na lista, nem guradar no banco)</span>
             @endif
         </p>
-            <p>{{ Str::limit($text->content, 30, '...') }}</p>  <!--Limita até 25 caracteres do texto -->
+
+        <!-- Botão de Favoritar -->
+        <button
+            class="favorite-btn flex items-center space-x-2 mt-4"
+            data-text-id="{{ $text->id }}"
+            data-favorited="{{ Auth::user()->favorites()->where('text_id', $text->id)->exists() ? 'true' : 'false' }}"
+        >
+            <!-- Ícone do coração -->
+            <span class="favorite-icon text-2xl">
+                {{ Auth::user()->favorites()->where('text_id', $text->id)->exists() ? '❤️' : '🤍' }}
+            </span>
+            <!-- Contador de favoritos -->
+            <span class="favorites-count text-gray-600 text-lg">
+                {{ $text->favorites_count }}
+            </span>
+        </button>
+
+            <p>{{ Str::limit($text->content, 30, '...') }}</p>  <!--Limita até 30 caracteres do texto -->
         <a href="{{ route('texts.show', $text->id) }}" style="text-decoration: none; color: blue;">Ver mais</a>
 
-       <!-- Botão de Favoritar -->
-<button
-    class="favorite-btn flex items-center space-x-2 mt-4"
-    data-text-id="{{ $text->id }}"
-    data-favorited="{{ Auth::user()->favorites()->where('text_id', $text->id)->exists() ? 'true' : 'false' }}"
->
-    <!-- Ícone do coração -->
-    <span class="favorite-icon text-2xl">
-        {{ Auth::user()->favorites()->where('text_id', $text->id)->exists() ? '❤️' : '🤍' }}
-    </span>
-    <!-- Contador de favoritos -->
-    <span class="favorites-count text-gray-600 text-lg">
-        {{ $text->favorites_count }}
-    </span>
-</button>
-    </div>
-
-
-
-    <div>
+       
+        <div>
         <form action="{{ route('texts.destroy', $text->id) }}" method="POST" style="display: inline;">
             @csrf
             @method('DELETE')
@@ -57,6 +57,9 @@
 
         <a href="{{ route('texts.edit', $text->id) }}" class="bg-yellow-300 text-white p-2 rounded hover:bg-yellow-600 " >Editar</a>
     </div>
+    </div>
     @endforeach
+
+    </div>
 </div>
 @endsection

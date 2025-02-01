@@ -51,7 +51,7 @@
         <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css">
         <script>
-            const predefinedTags = ["Education", "Technology", "Science", "Health", "Music", "Outros"];
+            const predefinedTags = ["Educação", "Música", "Ciência", "Saúde", "Tecnologia", "História", "Literatura", "Arte", "Filosofia", "Psicologia", "Esportes", "Negócios", "Economia", "Política", "Meio Ambiente", "Entretenimento", "Cinema", "Teatro", "Religião", "Espiritualidade", "Viagens", "Gastronomia", "Direito", "Matemática", "Astronomia", "Física", "Química", "Biologia", "Sociologia", "Linguística", "Programação", "Jogos", "Autodesenvolvimento", "Poesia", "Fotografia", "Meditação", "Moda", "Bem-estar", "Notícias", "Inovação", "Marketing", "Finanças", "Arquitetura", "Agricultura", "Inteligência Artificial", "Robótica", "Segurança da Informação", "Podcasts", "Curiosidades", "Cultura Pop", "Outros"]
             const input = document.querySelector('#tags-input');
             const tagify = new Tagify(input, {
                 whitelist: predefinedTags,
