@@ -75,6 +75,7 @@
                                     <p>
                                         Baseado na teoria da aquisição da linguagem de Stephen Krashen.
                                     </p>
+                                    
                                 </div>
                                 <div class="py-10 mt-10">
                                     <div class="bg-primary-700 rounded-md px-6 py-4 hover:bg-primary-400 focus:bg-primary-800">
@@ -184,7 +185,7 @@
                             </div>
                             <div class="p-4">
                                 <div class="flex flex-col">
-                                    <h3>Abordagem excepcional</h3>
+                                    <h3>Abordagem excelente</h3>
                                     <p>Textos sincronizados foi diferencial na maneira de entendimento.</p>
                                     <hr>
                                 </div>
@@ -197,7 +198,7 @@
                             <div class="p-4">
                                 <div class="flex flex-col">
                                     <h3>Favoritar</h3>
-                                    <p>Adorei a possibilidade de favoritar os textos do meu interesse.</p>
+                                    <p>Adorei poder favoritar os textos do meu interesse.</p>
                                     <hr>
                                 </div>
                                 <div class="flex flex-row">
