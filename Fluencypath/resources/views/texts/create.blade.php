@@ -2,67 +2,85 @@
 
 @section('content')
 <div class="container">
-    <h1 class="my-4" style="margin-left: 50px; font-size:larger">Adicionar Textos</h1>
+    <div>
+        <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+            <li>
+                <div class="flex items-center">
+                    <a href="{{route('texts.index')}}" class="ms-1 font-primary font-medium text-sm text-neutral-400 md:ms-2 dark:hover:text-neutral-300">Textos</a>
+                </div>
+            </li>
+            <li aria-current="page">
+                <div class="flex items-center">
+                    <x-icon name="chevron-right" />
+                    <span class="ms-1 font-primary font-medium text-sm text-neutral-400 md:ms-2">Adicionar Texto</span>
+                </div>
+            </li>
+        </ol>
+    </div>
 
-        <div class="flex p-10 ml-12">
-            <form
-                action="{{ route('texts.store') }}"
-                method="POST"
-                enctype="multipart/form-data"
-                class="flex flex-col space-y-4">
-                @csrf
-                <label for="title" class="text-sm font-semibold">Titulo do texto:</label>
-                <input
-                    type="text"
-                    name="title"
-                    required
-                    class="border border-gray-300 p-2 rounded">
+    <div class="flex py-10">
+        <div class=" w-[1240px] h-[900px]  sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900">
+                    <div class="w-full inline-flex justify-between items-center">
+                        <h1 class="my-4 font-primary font-medium text-2xl text-neutral-600">Adicionar Texto</h1>
+                        <label for="audio-upload" class="w-[200px] h-[50px] gap-1 inline-flex items-center justify-center px-4 py-2 bg-primary-700 font-primary font-500 border border-transparent rounded-lg text-primary-300  text-center text-base tracking-widest hover:bg-primary-400 focus:bg-primary-400 active:bg-primary-900 focus:outline-none transition ease-in-out duration-150">
+                                <x-icon name="microphone" />
+                                <span>Adicionar áudio</span>
+                            </label>
+                            <input id="audio-upload" type="file" name="audio" accept="audio/*" required class="hidden">
+                    </div>
 
-                <label for="content" class="text-sm font-semibold">Seu texto</label>
+                    <form
+                        action="{{ route('texts.store') }}"
+                        method="POST"
+                        enctype="multipart/form-data"
+                        class="flex flex-col space-y-4">
+                        @csrf
+                        <label for="title" class="text-sm font-semibold">Título</label>
+                        <input
+                            type="text"
+                            name="title"
+                            required
+                            class="border border-neutral-300 p-2 focus:outline-none rounded-lg">
 
-                <textarea
-                    name="content"
-                    required
-                    class="border border-gray-300 p-2 rounded w-96 h-60"></textarea>
+                        <label for="tag" class="text-sm font-semibold">Tags</label>
+                        <input
+                            id="tags-input"
+                            name="tag"
+                            required
+                            class="border border-neutral-300 p-2 rounded-lg">
 
-                <label for="tag" class="text-sm font-semibold">Tags:</label>
-                <input
-                    id="tags-input"
-                    name="tag"
-                    placeholder="Add tags"
-                    required
-                    class="border border-gray-300 p-2 rounded">
+                        <label for="content" class="text-sm font-semibold">Texto</label>
+                        <textarea
+                            name="content"
+                            required
+                            class="h-[400px] border border-neutral-300 p-2 rounded-lg"></textarea>
 
-
-                    <label for="audio" class="text-sm font-semibold">Áudio:</label>
-                    <input
-                        type="file"
-                        name="audio"
-                        accept="audio/*"
-                        required
-                        class="border border-gray-300 p-2 rounded">
-
-                <button type="submit" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
-                    Adicionar
-                </button>
-            </form>
+                        <div class="mt-20 flex justify-center items-center">
+                            <x-secondary-button>
+                                {{ __('Adicionar') }}
+                            </x-secondary-button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
+    </div>
 
-        <a href="{{ route('texts.index') }}" class="bg-blue-300 text-white p-2 rounded hover:bg-blue-600 ">Voltar</a>
-
-        <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css">
-        <script>
-            const predefinedTags = ["Education", "Technology", "Science", "Health", "Music", "Outros"];
-            const input = document.querySelector('#tags-input');
-            const tagify = new Tagify(input, {
-                whitelist: predefinedTags,
-                enforceWhitelist: false,
-                dropdown: {
-                    enabled: 1,
-                },
-            });
-        </script>
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css">
+    <script>
+        const predefinedTags = ["Education", "Technology", "Science", "Health", "Music", "Outros"];
+        const input = document.querySelector('#tags-input');
+        const tagify = new Tagify(input, {
+            whitelist: predefinedTags,
+            enforceWhitelist: false,
+            dropdown: {
+                enabled: 1,
+            },
+        });
+    </script>
 
 </div>
 @endsection
