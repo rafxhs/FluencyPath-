@@ -1,12 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-.sentence {
-    transition: background-color 0.3s ease;
-}
-
-.sentence.highlight {
-    background-color: yellow;
-    font-weight: bold;
-}

@@ -1,8 +1,8 @@
 .sentence {
-    transition: background-color 0.3s ease;
+    transition: background-color 0.2s ease;
 }
 
 .sentence.highlight {
-    background-color: yellow;
+    background-color: lightblue;
     font-weight: bold;
 }
