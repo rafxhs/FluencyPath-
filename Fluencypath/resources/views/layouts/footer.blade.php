@@ -49,7 +49,7 @@
     </div>
     <div class="flex flex-col items-center justify-center w-full py-4 mt-12 border-t border-slate-200 md:flex-row md:justify-between">
       <p class="block mb-4 text-sm text-center text-white md:mb-0">
-        © 2025 
+        © {{ date('Y') }} 
         <a href="https://material-tailwind.com/">FluencyPath</a>. Todos
         os direitos reservados.
       </p>
