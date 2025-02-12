@@ -57,6 +57,6 @@
 <!-- Importa o script JS -->
 <script src="{{ asset('/js/audio-sync.js') }}"></script>
 <!-- Importa o CSS que destaca as palavras -->
-<style src="{{ asset('/css/audio.css') }}"></style>
+<style src="{{ asset('/css/app.css') }}"></style>
 
 @endsection
