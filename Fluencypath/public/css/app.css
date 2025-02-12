@@ -2,3 +2,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.sentence {
+    transition: background-color 0.2s ease;
+}
+
+.sentence.highlight {
+    background-color: lightblue;
+    font-weight: bold;
+}
