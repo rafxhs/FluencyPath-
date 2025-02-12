@@ -19,6 +19,8 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+        $user = $request->user()->load('profilePicture');
+        
         return view('profile.edit', [
             'user' => $request->user(),
         ]);
@@ -29,6 +31,10 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
+        $request->validate([
+            'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
         $user = $request->user();
         
         $request->user()->fill($request->validated());
