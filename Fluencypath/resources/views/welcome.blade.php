@@ -30,7 +30,7 @@
                         </div>
 
                         <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                            <x-nav-link :href="route('about.index')" :active="request()->routeIs('about')">
+                            <x-nav-link :href="route('about')" :active="request()->routeIs('about')">
                                 {{ __('Quem somos') }}
                             </x-nav-link>
                         </div>
