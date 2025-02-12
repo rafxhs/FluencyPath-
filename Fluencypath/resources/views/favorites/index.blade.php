@@ -12,7 +12,7 @@
                 <div class="card-body">
                     <h3>{{ $text->title }}</h3>
                     <p>{{ Str::limit($text->content, 100, '...') }}</p>
-                    <a href="{{ route('texts.show', $text->id) }}" class="btn btn-primary">Ver Mais</a>
+                    <a href="{{ route('texts.show', $text->id) }}" class="btn btn-primary">Ver mais</a>
                 </div>
             </div>
         @endforeach

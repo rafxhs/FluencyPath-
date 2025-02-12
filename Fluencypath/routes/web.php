@@ -44,8 +44,8 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/about', function () {
-    return view('about.index');
-})->name('about.index');
+    return view('about');
+})->name('about');
 
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('redirect.google');
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
