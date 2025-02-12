@@ -22,12 +22,12 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('about.index')" :active="request()->routeIs('about.index')">
+                    <x-nav-link :href="route('about')" :active="request()->routeIs('about')">
                         {{ __('Flashcards') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('about.index')" :active="request()->routeIs('about.index')">
+                    <x-nav-link :href="route('about')" :active="request()->routeIs('about')">
                         {{ __('Quem somos') }}
                     </x-nav-link>
                 </div>
@@ -40,7 +40,7 @@
                             placeholder="Pesquisar"
                             class="w-full h-[40px] bg-primary-300 border-none ring-1 ring-neutral-300 text-neutral-800 focus:ring-2 focus:ring-neutral-300 rounded-lg pl-10 ps-8">
 
-                        <x-icon name="search" class="absolute w-5 h-5 mr-3 pointer-events-none" />
+                        <x-icon name="search" class="absolute inset-y-0  my-auto left-3 w-5 h-5 pointer-events-none" />
                     </div>
                 </form>
             </div>
@@ -131,7 +131,25 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+                {{ __('Home') }}
+            </x-responsive-nav-link>
+        </div>
+
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('texts.index')" :active="request()->routeIs('texts.index')">
+                {{ __('Textos') }}
+            </x-responsive-nav-link>
+        </div>
+
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('about')" :active="request()->routeIs('about')">
+                {{ __('Flashcards') }}
+            </x-responsive-nav-link>
+        </div>
+
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('about')" :active="request()->routeIs('about')">
+                {{ __('Quem somos') }}
             </x-responsive-nav-link>
         </div>
 
@@ -143,9 +161,23 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
+                <x-responsive-nav-link :href="route('profile.show', ['id' => Auth::user()->id])">
+                    {{ __('Meu perfil') }}
                 </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('texts.index')">
+                    {{ __('Meus textos') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('favorites.index')">
+                    {{ __('Meus favoritos') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('profile.edit')">
+                    {{ __('Configurações') }}
+                </x-responsive-nav-link>
+
+                <hr>
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
@@ -154,7 +186,7 @@
                     <x-responsive-nav-link :href="route('logout')"
                         onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('Sair') }}
                     </x-responsive-nav-link>
                 </form>
             </div>

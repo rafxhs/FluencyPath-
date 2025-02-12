@@ -20,8 +20,8 @@
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-primary-200">
         <div class="flex flex-row sm:w-[1000px] sm:h-[700px] shadow-md bg-primary-100 sm:rounded-md">
             <div class="sm:w-[530px] bg-gradient-to-r from-primary-400 via-primary-500 to-primary-600 sm:rounded-l-md">
-
-                <h1 class="font-primary text-4xl text-neutral-100">Seja bem-vindo de volta!</h1>
+               <!-- <img src="{{URL::asset('images/login-bg.jpg')}}"> obs.: talvez o fundo seja esse, não sei ainda -->
+                <h1 class="flex justify-center items-center font-primary  text-center text-4xl text-neutral-100">Seja bem-vindo de volta!</h1>
             </div>
 
             <div class="w-full sm:w-[470px] mt-6 pt-30 px-12 py-12 bg-primary-100 overflow-hidden sm:rounded-r-md">
