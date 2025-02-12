@@ -23,8 +23,8 @@
             <section>
                 <div>
                     <span>Desenvolvedores</span>
-                    <div>
-                        <div>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="">
                             <img>
                             <span>Erick Silva</span>
                             <p>Desenvolvedor Backend</p>

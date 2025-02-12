@@ -39,7 +39,7 @@
                     <div class="inline-flex justify-center items-center gap-5">
                         <div class="space-x-2">
                             <a
-                                href="{{ route('register') }}"
+                                href="{{ route('login') }}"
                                 class="w-[120px] h-[40px] font-primary font-semibold text-primary-700  text-center text-base hover:text-primary-400 focus:text-primary-800 px-6 py-4">
                                 {{ __('Entrar') }}
                             </a>
@@ -82,29 +82,6 @@
                                         Comece Agora
                                     </a>
 
-        <main class="mt-10">
-            <div class="container mx-auto px-2">
-                <section class="w-full h-[820px] mt-10">
-                    <div class="flex flex-col">
-                        <div class="flex flex-row items-center justify-center">
-                            <div class="flex flex-col w-[710px] h-[650px] justify-start mr-5">
-                                <div class="py-10 mb-10">
-                                    <h1 class="text-cyan-950 font-primary font-bold text-5xl py-10">
-                                        Uma nova forma de aprender inglês, baseada em ciência!
-                                    </h1>
-                                    <p>
-                                        Baseado na teoria da aquisição da linguagem de Stephen Krashen.
-                                    </p>
-                                    
-                                </div>
-                                <div class="py-10 mt-10">
-                                    <div class="bg-primary-700 rounded-md px-6 py-4 hover:bg-primary-400 focus:bg-primary-800">
-                                        <a
-                                            href="{{ route('register') }}"
-                                            class="font-primary text-white">
-                                            Comece Agora
-                                        </a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -181,43 +158,23 @@
                         <p class="text-start ">Clique no email ao lado que você será derecionado para o Outlook</p>
                     </div>
 
-                <section class="w-full h-[800px]">
-                    <div class="flex flex-col items-center justify-center">
-                        <h2 class="text-cyan-950 text-center font-primary font-bold text-4xl">Depoimentos</h2>
-                        <div class="grid grid-cols-4 gap-5 my-20">
-                            <div class="p-4">
-                                <div class="flex flex-col">
-                                    <h3>Fácil aprendizagem</h3>
-                                    <p>Uma plataforma simples de se usar e fluída.</p>
-                                    <hr>
-                                </div>
-                                <div class="flex flex-row">
-                                    <img src="{{URL::asset('images/woman-photo1.jpeg')}}" alt="Mulher" class="w-14 h-14 rounded-full object-cover">
-                                    <span>Roberta Miranda</span>
-                                </div>
-                            </div>
-                            <div class="p-4">
-                                <div class="flex flex-col">
-                                    <h3>Abordagem excelente</h3>
-                                    <p>Textos sincronizados foi diferencial na maneira de entendimento.</p>
-                                    <hr>
-                                </div>
-                                <div class="flex flex-row">
-                                    <img src="{{URL::asset('images/man-photo1.jpg')}}" alt="Homem" class="w-14 h-14 rounded-full object-cover">
-                                    <span>Paulo Henrique</span>
-                                </div>
-                            </div>
+                    <div>
+                        <a href="fluencypathifpe@gmail.com">
+                            fluencypathifpe@gmail.com
+                        </a>
+                    </div>
+                </div>
+            </section>
 
-                            <div class="p-4">
-                                <div class="flex flex-col">
-                                    <h3>Favoritar</h3>
-                                    <p>Adorei poder favoritar os textos do meu interesse.</p>
-                                    <hr>
-                                </div>
-                                <div class="flex flex-row">
-                                    <img src="{{URL::asset('images/woman-photo2.jpg')}}" alt="Mulher" class="w-14 h-14 rounded-full object-cover">
-                                    <span>Julia Almeida</span>
-                                </div>
+            <section class="w-full h-[800px]">
+                <div class="flex flex-col items-center justify-center">
+                    <h2 class="text-cyan-950 text-center font-primary font-bold text-4xl">Depoimentos</h2>
+                    <div class="grid grid-cols-4 gap-5 my-20">
+                        <div class="p-4">
+                            <div class="flex flex-col">
+                                <h3>Fácil aprendizagem</h3>
+                                <p>Uma plataforma simples de se usar e fluída.</p>
+                                <hr>
                             </div>
                             <div class="flex flex-row">
                                 <img src="{{URL::asset('images/woman-photo1.jpeg')}}" alt="Mulher" class="w-14 h-14 rounded-full object-cover">
