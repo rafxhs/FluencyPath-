@@ -57,7 +57,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Detecção do Início da Fala
     function detectSpeechStart(totalDuration) {
         let decodedData = waveSurfer.getDecodedData();
         if (!decodedData) {
@@ -66,10 +65,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         let channelData = decodedData.getChannelData(0);
-        let threshold = 0.08; // Limiar de volume para considerar como fala
         let sampleRate = decodedData.sampleRate;
-        let speechStart = 0;
 
+        // Calcular energia média para determinar um limiar adaptativo
+        let meanEnergy = channelData.reduce((sum, val) => sum + Math.abs(val), 0) / channelData.length;
+        let threshold = meanEnergy * 1.5; // Ajusta automaticamente o limiar
+
+        let speechStart = 0;
         for (let i = 0; i < channelData.length; i++) {
             if (Math.abs(channelData[i]) > threshold) {
                 speechStart = i / sampleRate;
