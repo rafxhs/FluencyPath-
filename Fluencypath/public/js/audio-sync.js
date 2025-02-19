@@ -7,33 +7,31 @@ document.addEventListener("DOMContentLoaded", function () {
     let sentences = document.querySelectorAll(".sentence");
     const playButton = document.getElementById("playButton");
 
+    // Inicialização do Wavesurfer e Carregamento do Áudio
     function initializeWavesurfer() {
         waveSurfer = WaveSurfer.create({
             container: "#waveform",
             waveColor: "violet",
             progressColor: "purple",
             cursorColor: "red",
-            height: 80,
+            height: 50,
         });
 
-         // Pega o caminho do áudio diretamente do botão Play
-         let audioPath = playButton.getAttribute("data-audio");
+        let audioPath = playButton.getAttribute("data-audio");
 
-         if (!audioPath) {
-             console.error("Erro: Caminho do áudio não encontrado.");
-             return;
-         }
- 
+        if (!audioPath) {
+            console.error("Erro: Caminho do áudio não encontrado.");
+            return;
+        }
+
         console.log("Carregando áudio:", audioPath);
-        waveSurfer.load(audioPath); 
+        waveSurfer.load(audioPath);
 
-        // Pega a duração (tempo) do audio
         waveSurfer.on("ready", function () {
             let totalDuration = waveSurfer.getDuration();
-            calculateTimestamps(totalDuration);
+            detectSpeechStart(totalDuration);
         });
 
-        // Adiciona as ondas com o waveSurfer
         waveSurfer.on("audioprocess", function () {
             highlightCurrentSentence(waveSurfer.getCurrentTime());
         });
@@ -44,7 +42,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         initialized = true;
     }
-
 
     playButton.addEventListener("click", function () {
         if (!initialized) {
@@ -60,25 +57,47 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    function calculateTimestamps(totalDuration) {
+    // Detecção do Início da Fala
+    function detectSpeechStart(totalDuration) {
+        let decodedData = waveSurfer.getDecodedData();
+        if (!decodedData) {
+            console.error("Erro: Dados de áudio não disponíveis.");
+            return;
+        }
+
+        let channelData = decodedData.getChannelData(0);
+        let threshold = 0.08; // Limiar de volume para considerar como fala
+        let sampleRate = decodedData.sampleRate;
+        let speechStart = 0;
+
+        for (let i = 0; i < channelData.length; i++) {
+            if (Math.abs(channelData[i]) > threshold) {
+                speechStart = i / sampleRate;
+                break;
+            }
+        }
+
+        console.log("Início da fala detectado em:", speechStart);
+        calculateTimestamps(totalDuration, speechStart);
+    }
+
+    function calculateTimestamps(totalDuration, speechStart) {
         let numSentences = sentences.length;
         let totalWords = 0;
         let wordsPerSentence = [];
 
-        // Conta o número total de palavras
         sentences.forEach(sentence => {
             let words = sentence.textContent.trim().split(/\s+/).length;
             wordsPerSentence.push(words);
             totalWords += words;
         });
 
-        let accumulatedTime = 0;
+        let accumulatedTime = speechStart;
+        sentenceTimestamps = [];
 
-        // Distribuir o tempo proporcionalmente ao número de palavras
-        sentenceTimestamps = []; // Atualizando a variável global
         wordsPerSentence.forEach((words, index) => {
-            let sentenceDuration = (words / totalWords) * totalDuration;
-            sentenceDuration += 0.5; // Adiciona meio segundo extra para cada frase
+            let sentenceDuration = (words / totalWords) * (totalDuration - speechStart);
+            sentenceDuration += 0.5;
 
             sentenceTimestamps.push(accumulatedTime);
             accumulatedTime += sentenceDuration;
@@ -87,6 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("Timestamps ajustados:", sentenceTimestamps);
     }
 
+    // Destaque das Frases de Texto
     function highlightCurrentSentence(currentTime) {
         sentences.forEach((sentence, index) => {
             if (

@@ -31,6 +31,7 @@
         <button id="playButton" data-audio="{{ Storage::url($texts->audio->file_path) }}">▶️ Play</button>
 
 
+
         <!-- TEXTO -->
         <p id="text-content">
             @php
