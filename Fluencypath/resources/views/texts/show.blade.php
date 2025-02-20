@@ -33,20 +33,30 @@
 
         <!-- TEXTO -->
         <p id="text-content">
-            @php
-                // Divide o texto usando . ? ! ou ,
-                $sentences = preg_split('/(?<=[.!?, ])\s+|(?=[A-Z])/', $texts->content, -1, PREG_SPLIT_NO_EMPTY);
+    @php
+        // Divide o texto em frases usando . ? ! ou ,
+        $sentences = preg_split('/(?<=[.!?, ])\s+|(?=[A-Z])/', $texts->content, -1, PREG_SPLIT_NO_EMPTY);
 
-                // Se não encontrou nenhuma separação, trata como uma única frase
-                if (count($sentences) === 0) {
-                    $sentences = [$texts->content];
-                }
+        // Se não encontrou nenhuma separação, trata como uma única frase
+        if (count($sentences) === 0) {
+            $sentences = [$texts->content];
+        }
+        @endphp
+
+        @foreach ($sentences as $index => $sentence)
+            @php
+                // Divide cada frase em palavras
+                $words = explode(' ', $sentence);
             @endphp
 
-            @foreach ($sentences as $index => $sentence)
-                <span class="sentence" data-index="{{ $index }}">{{ $sentence }} </span>
+            @foreach ($words as $word)
+                <span class="word" data-word="{{ strtolower(trim($word, '.,!?')) }}">{{ $word }}</span>
             @endforeach
-        </p>
+
+            <br>
+        @endforeach
+    </p>
+
     </div>
 
     <a href="{{ route('texts.index') }}" style="text-decoration: none; color: blue;">Voltar</a>
@@ -58,5 +68,28 @@
 <script src="{{ asset('/js/audio-sync.js') }}"></script>
 <!-- Importa o CSS que destaca as palavras -->
 <style src="{{ asset('/css/app.css') }}"></style>
+<div id="tooltip" class="hidden absolute bg-white p-3 shadow-md border rounded-md"></div>
+
+<script src="{{ asset('/js/word-tooltip.js') }}"></script>
+
+<style>
+    #tooltip {
+        position: absolute;
+        background-color: white;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        transition: opacity 0.3s ease-in-out;
+        z-index: 1000;
+        border: 1px solid #ddd;
+    }
+    .hidden {
+        display: none;
+    }
+    .word {
+        cursor: pointer;
+        color: blue;
+    }
+</style>
 
 @endsection

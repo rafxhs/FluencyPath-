@@ -5,6 +5,8 @@ use App\Http\Controllers\TextController;
 use App\Http\Controllers\FavoriteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\GoogleController;
+use Illuminate\Support\Facades\Http;
+// use Illuminate\Support\Facades\Route;
 
 
 
@@ -49,5 +51,22 @@ Route::get('/about', function () {
 
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('redirect.google');
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+
+Route::get('/word/{word}', function ($word) {
+    $response = Http::get("https://api.dictionaryapi.dev/api/v2/entries/en/{$word}");
+
+    if ($response->failed()) {
+        return response()->json(['error' => 'Palavra não encontrada'], 404);
+    }
+
+    $data = $response->json();
+
+    return [
+        'word' => $data[0]['word'],
+        'pronunciation' => $data[0]['phonetics'][0]['text'] ?? '',
+        'audio' => $data[0]['phonetics'][0]['audio'] ?? '',
+        'translation' => '',
+    ];
+});
 
 require __DIR__.'/auth.php';
