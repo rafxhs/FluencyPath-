@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 let data = await response.json();
 
                 if (data.error) {
-                    tooltip.innerHTML = "Palavra não encontrada.";
+                    tooltip.innerHTML = "Esta palavra ainda não esta diponivel!  &#128517;";
                 } else {
                     let audioButton = data.audio
                         ? `<button onclick="new Audio('${data.audio}').play()">🔊 Ouvir</button>`
@@ -19,7 +19,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     tooltip.innerHTML = `
                         <strong>${data.word}</strong> <br>
-                        <span style="font-style: italic;">${data.pronunciation || 'N/A'}</span> <br>
+                        Pronuncia: <em>${data.pronunciation || "Pronúncia não dísponivel."}</em> <br>
+                        Tradução: ${data.translation}<br>
                         ${audioButton}
                     `;
                 }
@@ -30,10 +31,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 tooltip.style.left = `${event.pageX}px`;
                 tooltip.style.top = `${event.pageY + 20}px`;
 
-                // Esconder após 5 segundos
-                setTimeout(() => tooltip.classList.add("hidden"), 5000);
+            // Esconde o tooltip(card) após 8 segundos
+               setTimeout(() => tooltip.classList.add("hidden"), 8000);
             } catch (error) {
-                console.log("Erro ao buscar a palavra.");
+                tooltip.innerHTML = "Erro ao buscar a palavra";
+                tooltip.classList.remove("hidden");
+                setTimeout(() => tooltip.classList.add("hidden"), 3000);
             }
         });
     });

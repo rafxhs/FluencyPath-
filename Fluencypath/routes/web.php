@@ -53,20 +53,35 @@ Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
 Route::get('/word/{word}', function ($word) {
-    $response = Http::get("https://api.dictionaryapi.dev/api/v2/entries/en/{$word}");
+    //  Busca dados da palavra na DictionaryAPI
+    $dictionaryResponse = Http::get("https://api.dictionaryapi.dev/api/v2/entries/en/{$word}");
 
-    if ($response->failed()) {
+    if ($dictionaryResponse->failed()) {
         return response()->json(['error' => 'Palavra não encontrada'], 404);
     }
 
-    $data = $response->json();
+    $dictionaryData = $dictionaryResponse->json();
+    
+    //  Obtém pronúncia e áudio (se disponível)
+    $pronunciation = $dictionaryData[0]['phonetics'][0]['text'] ?? '';
+    $audio = $dictionaryData[0]['phonetics'][0]['audio'] ?? '';
 
-    return [
-        'word' => $data[0]['word'],
-        'pronunciation' => $data[0]['phonetics'][0]['text'] ?? '',
-        'audio' => $data[0]['phonetics'][0]['audio'] ?? '',
-        'translation' => '',
-    ];
+    //  Busca a tradução da palavra usando MyMemory API (inglês -> português)
+    $translationResponse = Http::get("https://api.mymemory.translated.net/get", [
+        'q' => $word,
+        'langpair' => 'en|pt'
+    ]);
+
+    $translationData = $translationResponse->json();
+    $translation = $translationData['responseData']['translatedText'] ?? 'Sem tradução';
+
+    // Retorna os dados formatados
+    return response()->json([
+        'word' => $word,
+        'pronunciation' => $pronunciation,
+        'audio' => $audio,
+        'translation' => $translation
+    ]);
 });
 
 require __DIR__.'/auth.php';
