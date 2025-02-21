@@ -26,10 +26,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
                 tooltip.classList.remove("hidden");
-
-                // Posicionar o tooltip ao lado da palavra clicada
-                tooltip.style.left = `${event.pageX}px`;
-                tooltip.style.top = `${event.pageY + 20}px`;
+                
+                // Ajusta a posição do tooltip próximo à palavra clicada
+                let rect = this.getBoundingClientRect();
+                tooltip.style.left = `${rect.left + window.scrollX}px`;
+                tooltip.style.top = `${rect.bottom + window.scrollY + 10}px`;
 
             // Esconde o tooltip(card) após 8 segundos
                setTimeout(() => tooltip.classList.add("hidden"), 8000);

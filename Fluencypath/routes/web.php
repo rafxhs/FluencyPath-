@@ -3,8 +3,9 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TextController;
 use App\Http\Controllers\FavoriteController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WordController;
 use App\Http\Controllers\Auth\GoogleController;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Http;
 // use Illuminate\Support\Facades\Route;
 
@@ -52,36 +53,6 @@ Route::get('/about', function () {
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('redirect.google');
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
-Route::get('/word/{word}', function ($word) {
-    //  Busca dados da palavra na DictionaryAPI
-    $dictionaryResponse = Http::get("https://api.dictionaryapi.dev/api/v2/entries/en/{$word}");
-
-    if ($dictionaryResponse->failed()) {
-        return response()->json(['error' => 'Palavra não encontrada'], 404);
-    }
-
-    $dictionaryData = $dictionaryResponse->json();
-    
-    //  Obtém pronúncia e áudio (se disponível)
-    $pronunciation = $dictionaryData[0]['phonetics'][0]['text'] ?? '';
-    $audio = $dictionaryData[0]['phonetics'][0]['audio'] ?? '';
-
-    //  Busca a tradução da palavra usando MyMemory API (inglês -> português)
-    $translationResponse = Http::get("https://api.mymemory.translated.net/get", [
-        'q' => $word,
-        'langpair' => 'en|pt'
-    ]);
-
-    $translationData = $translationResponse->json();
-    $translation = $translationData['responseData']['translatedText'] ?? 'Sem tradução';
-
-    // Retorna os dados formatados
-    return response()->json([
-        'word' => $word,
-        'pronunciation' => $pronunciation,
-        'audio' => $audio,
-        'translation' => $translation
-    ]);
-});
+Route::get('/word/{word}', [WordController::class, 'getWordData']);
 
 require __DIR__.'/auth.php';
