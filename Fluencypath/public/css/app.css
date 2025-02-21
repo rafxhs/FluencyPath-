@@ -30,7 +30,6 @@
 }
 .word {
     cursor: pointer;
-    color: blue;
 }
 
 .word:hover{
