@@ -47,11 +47,11 @@
                 <span class="sentence" data-index="{{ $index }}">
                     @php
                         // Divide a frase em palavras
-                        $words = explode(' ', $sentence);
+                        $words = preg_split('/\s+/', trim($sentence), -1, PREG_SPLIT_NO_EMPTY);
                     @endphp
 
                     @foreach ($words as $word)
-                        <span class="word" data-word="{{ strtolower(trim($word, '.,!?')) }}">{{ $word }}</span>
+                        <span class="word" data-word="{{ strtolower(preg_replace('/[^\p{L}\p{N}]+/u', '', $word)) }}">{{ $word }}</span>
                     @endforeach
                 </span>
             @endforeach
