@@ -151,18 +151,30 @@
                 </div>
             </section>
 
-            <section class="w-full h-[620px]">
-                <div class="items-center justify-center flex flex-row py-10">
-                    <div>
-                        <h2 class="text-cyan-950 text-start font-primary font-bold text-4xl py-10">Precisa de ajuda? Entre em contato pelo email</h2>
-                        <p class="text-start ">Clique no email ao lado que você será derecionado para o Outlook</p>
-                    </div>
 
-                    <div>
-                        <a href="fluencypathifpe@gmail.com">
-                            fluencypathifpe@gmail.com
-                        </a>
-                    </div>
+            <section class="w-full h-[620px]">
+                <div class="items-center justify-center flex flex-col py-10">
+                    <h2 class="text-cyan-950 text-center font-primary font-bold text-4xl">Entre em contato</h2>
+                    <form action="{{ route('contact.send') }}" method="POST" class="w-full max-w-lg mt-5 bg-white p-6 rounded-lg shadow-lg">
+                        @csrf
+                        <div class="mb-4">
+                            <label class="block text-gray-700">Nome</label>
+                            <input type="text" name="name" required class="w-full p-2 border rounded">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700">Email</label>
+                            <input type="email" name="email" required class="w-full p-2 border rounded">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700">Assunto</label>
+                            <input type="text" name="subject" required class="w-full p-2 border rounded">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700">Mensagem</label>
+                            <textarea name="message" required class="w-full p-2 border rounded"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-primary-700 text-white p-2 rounded-lg hover:bg-primary-500">Enviar</button>
+                    </form>
                 </div>
             </section>
 

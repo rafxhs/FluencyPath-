@@ -5,6 +5,7 @@ use App\Http\Controllers\TextController;
 use App\Http\Controllers\FavoriteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\GoogleController;
+use App\Http\Controllers\ContactController;
 
 
 
@@ -49,5 +50,8 @@ Route::get('/about', function () {
 
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('redirect.google');
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+
 
 require __DIR__.'/auth.php';
