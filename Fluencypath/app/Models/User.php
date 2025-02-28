@@ -24,6 +24,10 @@ class User extends Authenticatable
         'google_id',
     ];
 
+    public function texts()
+    {
+        return $this->hasMany(Text::class, 'idUser');
+    }
 
     public function favorites()
     {
