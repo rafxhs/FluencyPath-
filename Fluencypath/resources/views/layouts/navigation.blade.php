@@ -40,7 +40,7 @@
                             placeholder="Pesquisar"
                             class="w-full h-[40px] bg-primary-300 border-none ring-1 ring-neutral-300 text-neutral-800 focus:ring-2 focus:ring-neutral-300 rounded-lg pl-10 ps-8">
 
-                        <x-icon name="search" class="absolute inset-y-0  my-auto left-3 w-5 h-5 pointer-events-none" />
+                        <!--<x-icon name="home" class="absolute inset-y-0  my-auto left-3 w-5 h-5 pointer-events-none" />-->
                     </div>
                 </form>
             </div>

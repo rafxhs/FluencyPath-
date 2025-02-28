@@ -2,6 +2,10 @@
 
 @section('content')
 <div class="container" style="margin-left: 50px;">
+    <div>
+
+    </div>
+    
     <h1 class="my-4" style=" font-size:larger">Textos</h1>
 
     <a href="{{ route('texts.create') }}" class="btn btn-danger btn-sm bg-blue-300 text-white p-2 rounded hover:bg-blue-400">Adicionar Texto</a>
@@ -24,7 +28,7 @@
                 <span>tags não correspondente (MUDAR ISSO pra quando não tiver na lista, nem guradar no banco)</span>
             @endif
         </p>
-            <p>{{ Str::limit($text->content, 30, '...') }}</p>  <!--Limita até 25 caracteres do texto -->
+            <p>{{ Str::limit($text->content, 160, '...') }}</p>  <!--Limita até 25 caracteres do texto -->
             @if ($text->audio_path)
             <audio controls>
                 <source src="{{ asset('storage/' . $text->audio_path) }}" type="audio/mpeg">
