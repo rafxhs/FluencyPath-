@@ -155,6 +155,7 @@
             <section class="w-full h-[620px]">
                 <div class="items-center justify-center flex flex-col py-10">
                     <h2 class="text-cyan-950 text-center font-primary font-bold text-4xl">Entre em contato</h2>
+                    <p class="text-gray-700 text-center  mt-2">Estamos aqui para ajudar! Envie suas dúvidas, sugestões ou qualquer outro feedback. Sua opinião é muito importante para nós.</p>
                     <form action="{{ route('contact.send') }}" method="POST" class="w-full max-w-lg mt-5 bg-white p-6 rounded-lg shadow-lg">
                         @csrf
                         <div class="mb-4">
