@@ -25,7 +25,7 @@
                     <span>Desenvolvedores</span>
                     <div class="grid grid-cols-3 gap-4">
                         <div class="">
-                            <img>
+                            <img src="{{ URL::asset('images/developer1.jpg') }}" alt="Foto do Desenvolvedor">
                             <span>Erick Silva</span>
                             <p>Desenvolvedor Backend</p>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed luctus lectus ligula, dictum semper mi egestas ut.</p>
@@ -36,7 +36,7 @@
                         </div>
 
                         <div>
-                            <img>
+                            <img src="{{ URL::asset('images/developer2.jpg') }}" alt="Foto do Desenvolvedor">
                             <span>Hanna Sabrynna</span>
                             <p>Desenvolvedora Full Stack</p>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed luctus lectus ligula, dictum semper mi egestas ut.</p>
@@ -47,8 +47,8 @@
                         </div>
 
                         <div>
-                            <img>
-                            <span>Erick Silva</span>
+                            <img src="{{ URL::asset('images/developer3.jpg') }}" alt="Foto do Desenvolvedor">
+                            <span>Rafaela Neves</span>
                             <p>UI/UX Designer e Desenvolvedora Frontend</p>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed luctus lectus ligula, dictum semper mi egestas ut.</p>
                             <div>
