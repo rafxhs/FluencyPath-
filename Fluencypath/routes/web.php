@@ -7,6 +7,8 @@ use App\Http\Controllers\WordController;
 use App\Http\Controllers\Auth\GoogleController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Http;
+use App\Http\Controllers\FlashcardController;
+
 // use Illuminate\Support\Facades\Route;
 
 
@@ -41,6 +43,10 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/texts/{id}/favorite', [FavoriteController::class, 'toggleFavorite'])->name('texts.toggleFavorite');
     Route::get('/texts/{id}/favorites-count', [FavoriteController::class, 'getFavoritesCount'])->name('texts.getFavoritesCount');
+
+    Route::post('/flashcards', [FlashcardController::class, 'store'])->name('flashcards.index');
+    Route::get('/flashcards', [FlashcardController::class, 'index'])->name('flashcards.index');
+    Route::delete('/flashcards/{id}', [FlashcardController::class, 'destroy'])->name('flashcards.destroy');
 
 
 

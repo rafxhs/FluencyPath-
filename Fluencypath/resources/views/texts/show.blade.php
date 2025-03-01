@@ -12,16 +12,16 @@
         <p>
             Tags:
             @php
-                $tags = json_decode($texts->tag, true);
+            $tags = json_decode($texts->tag, true);
             @endphp
             @if (is_array($tags))
-                @foreach ($tags as $tag)
-                    <span style="display: inline-block; background-color: #e0e0e0; color: #333; padding: 5px 10px; margin: 5px; border-radius: 5px;">
-                        {{ $tag['value'] }}
-                    </span>
-                @endforeach
+            @foreach ($tags as $tag)
+            <span style="display: inline-block; background-color: #e0e0e0; color: #333; padding: 5px 10px; margin: 5px; border-radius: 5px;">
+                {{ $tag['value'] }}
+            </span>
+            @endforeach
             @else
-                <span>tags não correspondente</span>
+            <span>tags não correspondente</span>
             @endif
         </p>
 
@@ -34,29 +34,29 @@
         <!-- TEXTO -->
         <p id="text-content">
             @php
-                // Divide o texto em frases usando . ? ! ou ,
-                $sentences = preg_split('/(?<=[.!?, ])\s+|(?=[A-Z])/', $texts->content, -1, PREG_SPLIT_NO_EMPTY);
+            // Divide o texto em frases usando . ? ! ou ,
+            $sentences = preg_split('/(?<=[.!?, ])\s+|(?=[A-Z])/', $texts->content, -1, PREG_SPLIT_NO_EMPTY);
 
                 // Se não encontrou nenhuma separação, trata como uma única frase
                 if (count($sentences) === 0) {
-                    $sentences = [$texts->content];
+                $sentences = [$texts->content];
                 }
-            @endphp
+                @endphp
 
-            @foreach ($sentences as $index => $sentence)
-                <span class="sentence" data-index="{{ $index }}">
-                    @php
-                        // Divide a frase em palavras
+                <p id="text-content">
+                    @foreach ($sentences as $index => $sentence)
+                    <span class="sentence" data-index="{{ $index }}">
+                        @php
                         $words = preg_split('/\s+/', trim($sentence), -1, PREG_SPLIT_NO_EMPTY);
-                    @endphp
-
-                    @foreach ($words as $word)
-                        <span class="word" data-word="{{ strtolower(preg_replace('/[^\p{L}\p{N}]+/u', '', $word)) }}">{{ $word }}</span>
+                        @endphp
+                        @foreach ($words as $word)
+                        <span class="word" data-word="{{ strtolower(preg_replace('/[^\p{L}\p{N}]+/u', '', $word)) }}">
+                            {{ $word }}
+                        </span>
+                        @endforeach
+                    </span>
                     @endforeach
-                </span>
-            @endforeach
-        </p>
-
+                </p>
 
     </div>
 
