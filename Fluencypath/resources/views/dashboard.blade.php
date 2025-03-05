@@ -1,9 +1,10 @@
 @extends('layouts.app')
 @section('content')
 <div>
-    <div>
+    <div class="flex justify-end">
         <x-secondary-button>
-            <a href="{{ route('texts.create') }}">Adicionar texto</a>
+            <x-heroicon-s-plus class="w-6 h-6  text-primary-300"/>
+            <a href="{{ route('texts.create') }}" class="font-primary text-sm text-primary-300">Adicionar texto</a>
         </x-secondary-button>
     </div>
     <section>
