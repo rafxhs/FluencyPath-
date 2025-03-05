@@ -1,7 +1,8 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+@if(Auth::User())
+<nav x-data="{ open: false }" class="bg-primary-200 drop-shadow-sm">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
+        <div class="flex justify-between h-[80px]">
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
@@ -22,23 +23,45 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('about.index')" :active="request()->routeIs('about.index')">
+                    <x-nav-link :href="route('flashcards.index')" :active="request()->routeIs('flashcards.index')">
+                        {{ __('Flashcards') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('about')" :active="request()->routeIs('about')">
                         {{ __('Quem somos') }}
                     </x-nav-link>
                 </div>
+            </div>
+
+            <div class="flex justify-between items-center border-b">
+                <form class="w-[350px]">
+                    <div class="relative flex items-center  text-neutral-500 focus-within:text-neutral-800">
+                        <input id="searchbar" name="searchbar" type="search" aria-label="Pesquisar"
+                            placeholder="Pesquisar"
+                            class="w-full h-[40px] bg-primary-300 border-none ring-1 ring-neutral-300 text-neutral-300 focus:ring-2 focus:ring-neutral-300 rounded-lg pl-10 ps-8">
+                    </div>
+                </form>
+            </div>
+
+            <div class="flex justify-between items-center space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                <button class="w-[90px] h-[40px] border-neutral-200 border-2 rounded-md">
+                    <div class="inline-flex justify-between items-center gap-5">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1.6em" height="1.6em" viewBox="0 0 32 32"><g fill="none"><path fill="url(#f517id0)" d="M12.555 8.935c1.537-2.397 2.447-4.611 2.921-6.177c.182-.6.95-.845 1.406-.415c6.873 6.481 9.12 11.43 9.567 17.148c.328 5.531-2.39 10.453-9.687 10.453c-6.85 0-11.907-4.781-11.22-12.36c.412-4.528 2.173-7.979 3.58-10.033c.438-.639 1.351-.648 1.856-.06l1.259 1.466c.087.101.246.09.318-.022"/><path fill="url(#f517id1)" d="M12.555 8.935c1.537-2.397 2.447-4.611 2.921-6.177c.182-.6.95-.845 1.406-.415c6.873 6.481 9.12 11.43 9.567 17.148c.328 5.531-2.39 10.453-9.687 10.453c-6.85 0-11.907-4.781-11.22-12.36c.412-4.528 2.173-7.979 3.58-10.033c.438-.639 1.351-.648 1.856-.06l1.259 1.466c.087.101.246.09.318-.022"/><path fill="url(#f517idb)" d="M12.555 8.935c1.537-2.397 2.447-4.611 2.921-6.177c.182-.6.95-.845 1.406-.415c6.873 6.481 9.12 11.43 9.567 17.148c.328 5.531-2.39 10.453-9.687 10.453c-6.85 0-11.907-4.781-11.22-12.36c.412-4.528 2.173-7.979 3.58-10.033c.438-.639 1.351-.648 1.856-.06l1.259 1.466c.087.101.246.09.318-.022"/><path fill="url(#f517id2)" d="M12.555 8.935c1.537-2.397 2.447-4.611 2.921-6.177c.182-.6.95-.845 1.406-.415c6.873 6.481 9.12 11.43 9.567 17.148c.328 5.531-2.39 10.453-9.687 10.453c-6.85 0-11.907-4.781-11.22-12.36c.412-4.528 2.173-7.979 3.58-10.033c.438-.639 1.351-.648 1.856-.06l1.259 1.466c.087.101.246.09.318-.022"/><path fill="url(#f517id3)" d="M12.555 8.935c1.537-2.397 2.447-4.611 2.921-6.177c.182-.6.95-.845 1.406-.415c6.873 6.481 9.12 11.43 9.567 17.148c.328 5.531-2.39 10.453-9.687 10.453c-6.85 0-11.907-4.781-11.22-12.36c.412-4.528 2.173-7.979 3.58-10.033c.438-.639 1.351-.648 1.856-.06l1.259 1.466c.087.101.246.09.318-.022"/><path fill="url(#f517id4)" d="M12.555 8.935c1.537-2.397 2.447-4.611 2.921-6.177c.182-.6.95-.845 1.406-.415c6.873 6.481 9.12 11.43 9.567 17.148c.328 5.531-2.39 10.453-9.687 10.453c-6.85 0-11.907-4.781-11.22-12.36c.412-4.528 2.173-7.979 3.58-10.033c.438-.639 1.351-.648 1.856-.06l1.259 1.466c.087.101.246.09.318-.022"/><path fill="url(#f517id5)" d="M12.555 8.935c1.537-2.397 2.447-4.611 2.921-6.177c.182-.6.95-.845 1.406-.415c6.873 6.481 9.12 11.43 9.567 17.148c.328 5.531-2.39 10.453-9.687 10.453c-6.85 0-11.907-4.781-11.22-12.36c.412-4.528 2.173-7.979 3.58-10.033c.438-.639 1.351-.648 1.856-.06l1.259 1.466c.087.101.246.09.318-.022"/><path fill="url(#f517id6)" d="M12.555 8.935c1.537-2.397 2.447-4.611 2.921-6.177c.182-.6.95-.845 1.406-.415c6.873 6.481 9.12 11.43 9.567 17.148c.328 5.531-2.39 10.453-9.687 10.453c-6.85 0-11.907-4.781-11.22-12.36c.412-4.528 2.173-7.979 3.58-10.033c.438-.639 1.351-.648 1.856-.06l1.259 1.466c.087.101.246.09.318-.022"/><g filter="url(#f517idf)"><path fill="url(#f517id7)" d="M10.178 19.877c1.302-3.1 3.975-6.529 5.78-8.39a1.336 1.336 0 0 1 1.872-.038c3.461 3.189 4.503 6.072 5.387 9.428c.92 3.492 0 9.118-6.921 9.118c-5.96 0-8.026-5.578-6.118-10.118"/><path fill="url(#f517id8)" d="M10.178 19.877c1.302-3.1 3.975-6.529 5.78-8.39a1.336 1.336 0 0 1 1.872-.038c3.461 3.189 4.503 6.072 5.387 9.428c.92 3.492 0 9.118-6.921 9.118c-5.96 0-8.026-5.578-6.118-10.118"/><path fill="url(#f517id9)" d="M10.178 19.877c1.302-3.1 3.975-6.529 5.78-8.39a1.336 1.336 0 0 1 1.872-.038c3.461 3.189 4.503 6.072 5.387 9.428c.92 3.492 0 9.118-6.921 9.118c-5.96 0-8.026-5.578-6.118-10.118"/></g><path fill="url(#f517idc)" d="M10.178 19.877c1.302-3.1 3.975-6.529 5.78-8.39a1.336 1.336 0 0 1 1.872-.038c3.461 3.189 4.503 6.072 5.387 9.428c.92 3.492 0 9.118-6.921 9.118c-5.96 0-8.026-5.578-6.118-10.118"/><path fill="url(#f517ida)" d="M10.178 19.877c1.302-3.1 3.975-6.529 5.78-8.39a1.336 1.336 0 0 1 1.872-.038c3.461 3.189 4.503 6.072 5.387 9.428c.92 3.492 0 9.118-6.921 9.118c-5.96 0-8.026-5.578-6.118-10.118"/><g filter="url(#f517idg)"><path fill="url(#f517idd)" d="M11.814 11.539c2.315-3.39 3.67-7.058 4.083-7.962c-.603 4.634-2.36 8.028-5.668 12.398c-2.646 3.496-3.124 6.488-3.101 7.217c-.827-5.562 1.791-7.416 4.686-11.653"/></g><g filter="url(#f517idh)"><path fill="url(#f517ide)" d="M9.814 7.874c-1.3 1.614-3.884 6.09-3.82 11.084c1.28-5.122 4.275-6.736 3.82-11.084"/></g><defs><radialGradient id="f517id0" cx="0" cy="0" r="1" gradientTransform="rotate(-179.474 12.046 9.805)scale(17.0988 25.7861)" gradientUnits="userSpaceOnUse"><stop stop-color="#ff953d"/><stop offset="1" stop-color="#ff5141"/></radialGradient><radialGradient id="f517id1" cx="0" cy="0" r="1" gradientTransform="rotate(-157.937 6.712 6.816)scale(10.3441 17.8495)" gradientUnits="userSpaceOnUse"><stop stop-color="#ce5327"/><stop offset="1" stop-color="#ce5327" stop-opacity="0"/></radialGradient><radialGradient id="f517id2" cx="0" cy="0" r="1" gradientTransform="rotate(24.015 -31.353 18.85)scale(3.10465 25.6991)" gradientUnits="userSpaceOnUse"><stop stop-color="#ffaa7b"/><stop offset="1" stop-color="#ffaa7b" stop-opacity="0"/></radialGradient><radialGradient id="f517id3" cx="0" cy="0" r="1" gradientTransform="matrix(.843 3.74668 -4.675 1.05188 9.31 6.25)" gradientUnits="userSpaceOnUse"><stop stop-color="#ff5e47"/><stop offset="1" stop-color="#ff5e47" stop-opacity="0"/></radialGradient><radialGradient id="f517id4" cx="0" cy="0" r="1" gradientTransform="matrix(.37467 10.13047 -9.3768 .3468 16.429 1.366)" gradientUnits="userSpaceOnUse"><stop stop-color="#ff2f3c"/><stop offset="1" stop-color="#ff2f3c" stop-opacity="0"/></radialGradient><radialGradient id="f517id5" cx="0" cy="0" r="1" gradientTransform="matrix(2.07795 .9835 -1.9737 4.17002 13.9 4.8)" gradientUnits="userSpaceOnUse"><stop stop-color="#ff846c"/><stop offset="1" stop-color="#ff846c" stop-opacity="0"/></radialGradient><radialGradient id="f517id6" cx="0" cy="0" r="1" gradientTransform="matrix(-.89842 2.09375 -.4798 -.20588 12.458 8.21)" gradientUnits="userSpaceOnUse"><stop stop-color="#ffa682"/><stop offset="1" stop-color="#ffa682" stop-opacity="0"/></radialGradient><radialGradient id="f517id7" cx="0" cy="0" r="1" gradientTransform="rotate(-168.558 11.823 11.126)scale(10.0291 12.4891)" gradientUnits="userSpaceOnUse"><stop stop-color="#ffda2f"/><stop offset="1" stop-color="#ff8e41"/></radialGradient><radialGradient id="f517id8" cx="0" cy="0" r="1" gradientTransform="matrix(5.05808 13.20705 -11.47512 4.39478 12.4 8.592)" gradientUnits="userSpaceOnUse"><stop stop-color="#fd5639"/><stop offset="1" stop-color="#fe5533" stop-opacity="0"/></radialGradient><radialGradient id="f517id9" cx="0" cy="0" r="1" gradientTransform="matrix(-9.74917 .98358 -2.40823 -23.87023 19.239 20.629)" gradientUnits="userSpaceOnUse"><stop offset=".628" stop-color="#d7812d" stop-opacity="0"/><stop offset="1" stop-color="#d7812d"/></radialGradient><radialGradient id="f517ida" cx="0" cy="0" r="1" gradientTransform="rotate(143.063 8.353 13.24)scale(16.0546 11.6174)" gradientUnits="userSpaceOnUse"><stop offset=".772" stop-color="#f18a52" stop-opacity="0"/><stop offset="1" stop-color="#f18a52"/></radialGradient><linearGradient id="f517idb" x1="18.336" x2="18.336" y1="29.944" y2="24.846" gradientUnits="userSpaceOnUse"><stop stop-color="#ff7583"/><stop offset="1" stop-color="#ff7583" stop-opacity="0"/></linearGradient><linearGradient id="f517idc" x1="16.503" x2="16.503" y1="10.612" y2="14.259" gradientUnits="userSpaceOnUse"><stop stop-color="#f95131"/><stop offset="1" stop-color="#f95131" stop-opacity="0"/></linearGradient><linearGradient id="f517idd" x1="14.996" x2="7.655" y1="4.255" y2="22.732" gradientUnits="userSpaceOnUse"><stop stop-color="#ff7558"/><stop offset="1" stop-color="#f38758"/></linearGradient><linearGradient id="f517ide" x1="9.541" x2="5.582" y1="8.144" y2="19.479" gradientUnits="userSpaceOnUse"><stop stop-color="#ff815b"/><stop offset="1" stop-color="#ff9c6d"/></linearGradient><filter id="f517idf" width="14.525" height="18.91" x="9.49" y="11.085" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/><feOffset dx=".5"/><feGaussianBlur stdDeviation=".25"/><feComposite in2="hardAlpha" k2="-1" k3="1" operator="arithmetic"/><feColorMatrix values="0 0 0 0 0.952941 0 0 0 0 0.615686 0 0 0 0 0.364706 0 0 0 1 0"/><feBlend in2="shape" result="effect1_innerShadow_18_15821"/></filter><filter id="f517idg" width="11.424" height="22.115" x="5.723" y="2.327" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_18_15821" stdDeviation=".625"/></filter><filter id="f517idh" width="6.868" height="14.084" x="4.492" y="6.374" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_18_15821" stdDeviation=".75"/></filter></defs></g></svg>
+                        <span class="font-secondary font-medium text-xl text-neutral-400">0</span>
+                    </div>
+                </button>
             </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                            <div>{{ Auth::user()->name }}</div>
-
-                            <div class="ms-1">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
+                        <button class="px-3 py-2">
+                            <div class="flex flex-row">
+                                <img src="{{ Auth::user()->profilePicture ? asset('storage/' . Auth::user()->profilePicture->path) : asset('images/default-profile.png') }}"
+                                    alt="Foto de Perfil"
+                                    class="w-[40px] h-[40px] rounded-full object-cover">
                             </div>
                         </button>
                     </x-slot>
@@ -107,7 +130,25 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+                {{ __('Home') }}
+            </x-responsive-nav-link>
+        </div>
+
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('texts.index')" :active="request()->routeIs('texts.index')">
+                {{ __('Textos') }}
+            </x-responsive-nav-link>
+        </div>
+
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('flashcards.index')" :active="request()->routeIs('flashcards.index')">
+                {{ __('Flashcards') }}
+            </x-responsive-nav-link>
+        </div>
+
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('about')" :active="request()->routeIs('about')">
+                {{ __('Quem somos') }}
             </x-responsive-nav-link>
         </div>
 
@@ -119,9 +160,23 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
+                <x-responsive-nav-link :href="route('profile.show', ['id' => Auth::user()->id])">
+                    {{ __('Meu perfil') }}
                 </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('texts.index')">
+                    {{ __('Meus textos') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('favorites.index')">
+                    {{ __('Meus favoritos') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('profile.edit')">
+                    {{ __('Configurações') }}
+                </x-responsive-nav-link>
+
+                <hr>
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
@@ -130,10 +185,75 @@
                     <x-responsive-nav-link :href="route('logout')"
                         onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('Sair') }}
                     </x-responsive-nav-link>
                 </form>
             </div>
         </div>
     </div>
 </nav>
+@endif
+
+@if(!(Auth::User()))
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>FluencyPath</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+
+    <!-- Styles / Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+
+<body class="font-sans bg-primary-100 antialiased flex flex-col min-h-screen">
+    <div class="flex-grow">
+        <nav x-data="{ open: false }" class="bg-primary-100">
+            <!-- Primary Navigation Menu -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-[80px]">
+                    <div class="flex">
+                        <!-- Logo -->
+                        <div class="shrink-0 flex items-center">
+                            <a href="{{ route('dashboard') }}">
+                                <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                            </a>
+                        </div>
+
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <x-nav-link :href="route('about')" :active="request()->routeIs('about')">
+                                {{ __('Quem somos') }}
+                            </x-nav-link>
+                        </div>
+                    </div>
+
+                    <div class="inline-flex justify-center items-center gap-5">
+                        <div class="space-x-2">
+                            <a
+                                href="{{ route('login') }}"
+                                class="w-[120px] h-[40px] font-primary font-semibold text-primary-700  text-center text-base hover:text-primary-400 focus:text-primary-800 px-6 py-4">
+                                {{ __('Entrar') }}
+                            </a>
+
+                        </div>
+
+                        <div class="space-x-2">
+                            <a
+                                href="{{ route('register') }}"
+                                class="w-[120px] h-[40px] font-primary text-primary-300  text-center text-base bg-primary-700 hover:bg-primary-400 focus:bg-primary-800 px-6 py-4 rounded-lg">
+                                {{ __('Cadastre-se') }}
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+@endif

@@ -20,6 +20,15 @@ class Text extends Model
     ];
 
     /**
+     * Relacionamento com os usuários que possuem textos
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'idUser');
+    }
+
+
+    /**
      * Relacionamento com os usuários que favoritaram o texto
      */
     public function favorites(): BelongsToMany
@@ -28,9 +37,9 @@ class Text extends Model
     }
 
     public function audio()
-{
-    return $this->hasOne(Audio::class, 'idText');
-}
+    {
+        return $this->hasOne(Audio::class, 'idText');
+    }
 
     /**
      * Eventos do modelo para inicializar ou ajustar o campo `favorites_count`

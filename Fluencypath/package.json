@@ -17,6 +17,10 @@
         "vite": "^6.0"
     },
     "dependencies": {
+<<<<<<< HEAD
         "wavesurfer.js": "^7.9.0"
+=======
+        "@heroicons/react": "^2.2.0"
+>>>>>>> frontend
     }
 }

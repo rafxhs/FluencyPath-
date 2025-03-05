@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Favorite;
+use App\Models\Text;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TextController;
 use App\Http\Controllers\FavoriteController;
@@ -10,6 +12,8 @@ use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\FlashcardController;
 
 // use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ContactController;
 
 
 
@@ -20,11 +24,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', function () {
+        $user = auth()->user();
+        $userTexts = $user->texts()->latest()->take(3)->get();
+        $favoritedTexts = Text::whereHas('favorites')->latest()->take(3)->get();
+        return view('dashboard', compact('favoritedTexts', 'userTexts'));
+    })->name('dashboard');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show');
@@ -53,12 +60,14 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/about', function () {
-    return view('about.index');
-})->name('about.index');
+    return view('about');
+})->name('about');
 
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('redirect.google');
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
 Route::get('/word/{word}', [WordController::class, 'getWordData']);
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+
 
 require __DIR__.'/auth.php';

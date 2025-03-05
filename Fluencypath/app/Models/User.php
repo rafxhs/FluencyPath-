@@ -25,6 +25,10 @@ class User extends Authenticatable
         'is_admin',
     ];
 
+    public function texts()
+    {
+        return $this->hasMany(Text::class, 'idUser');
+    }
 
     public function favorites()
     {

@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<link rel="stylesheet" href="{{ asset('css/app.css') }}">
-
-<div class="container">
+<section class="container">
     <h1 class="my-4">Texto</h1>
     <div class="card" style="border: 1px solid #ccc; padding: 15px; margin: 15px; width: 50%">
         <h3>{{ $texts->title }}</h3>
