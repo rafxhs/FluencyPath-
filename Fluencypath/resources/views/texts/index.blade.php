@@ -6,6 +6,10 @@
 
     <a href="{{ route('texts.create') }}" class="btn btn-danger btn-sm bg-blue-300 text-white p-2 rounded hover:bg-blue-400">Adicionar Texto</a>
 
+
+
+    <a href="{{ route('flashcards.index') }}" class="btn btn-danger btn-sm bg-blue-300 text-white p-2 rounded hover:bg-blue-400">Ver meus flashcards</a>
+
     @foreach ($texts as $text)
         <div class="card" style="border: 1px solid #ccc; padding: 15px; margin: 15px; width: 50%">
             <h3>{{ $text->title }}</h3>
