@@ -90,4 +90,4 @@ O **FluencyPath** foi desenvolvido por uma equipe de estudantes da disciplina **
 
 - [Erick Souza](https://github.com/ErickSilva-s) – Desenvolvedor Back-end
 - [Hanna Sabrynna](https://github.com/hannasabrynna) – Desenvolvedora Full-stack
-- [Rafaela Neves](https://github.com/rafxhs) – UI/UX Designer
+- [Rafaela Neves](https://github.com/rafxhs) – UI/UX Designer e Desenvolvedora Frontend
