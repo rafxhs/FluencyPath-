@@ -7,6 +7,28 @@
     </h2>
 </x-slot>
 
+<div>
+    <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+        <li aria-current="page">
+            <div class="flex items-center">
+                <span class="ms-1 font-primary font-medium text-sm text-neutral-400 md:ms-2">Perfil</span>
+            </div>
+        </li>
+        <li>
+            <div class="flex items-center">
+            <x-heroicon-s-chevron-right class="w-5 h-5 text-neutral-300" />
+                <a :href="route('profile.show', ['id' => Auth::user()->id])" class="ms-1 font-primary font-medium text-sm text-neutral-400 md:ms-2 dark:hover:text-neutral-300">{{ __('Meu Perfil') }}</a>
+            </div>
+        </li>
+        <li aria-current="page">
+            <div class="flex items-center">
+                <x-heroicon-s-chevron-right class="w-5 h-5 text-neutral-300" />
+                <span class="ms-1 font-primary font-medium text-sm text-neutral-400 md:ms-2">Configurações</span>
+            </div>
+        </li>
+    </ol>
+</div>
+
 <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
         <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">

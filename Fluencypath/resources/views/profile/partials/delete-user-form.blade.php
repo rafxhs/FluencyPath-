@@ -1,6 +1,6 @@
 <section class="space-y-6">
     <header>
-        <h2 class="text-lg font-medium text-gray-900">
+        <h2 class="font-medium text-xl text-neutral-600">
             {{ __('Excluir conta') }}
         </h2>
 

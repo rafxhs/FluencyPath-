@@ -1,6 +1,6 @@
 <section>
     <header>
-        <h2 class="text-lg font-medium text-gray-900">
+        <h2 class="font-primary font-medium text-xl text-neutral-600">
             {{ __('Editar Perfil') }}
         </h2>
 
@@ -18,13 +18,13 @@
         @method('patch')
 
         <div>
-            <div class="flex flex-row gap-4">
+            <div class="flex flex-row items-center gap-10">
                 <div class="mt-2">
                     <img src="{{ Auth::user()->profilePicture ? asset('storage/' . Auth::user()->profilePicture->path) : asset('images/default-profile.png') }}"
                         alt="Foto de Perfil Atual"
-                        class="w-32 h-32 rounded-full object-cover">
+                        class="w-32 h-32 rounded-full object-cover drop-shadow-md">
                 </div>
-                <label for="profile_picture" class="w-[200px] h-[50px] gap-1 inline-flex items-center justify-center px-4 py-2 bg-primary-700 font-primary font-500 border border-transparent rounded-lg text-primary-300  text-center text-base tracking-widest hover:bg-primary-400 focus:bg-primary-400 active:bg-primary-900 focus:outline-none transition ease-in-out cursor-pointer duration-150">
+                <label for="profile_picture" class="w-[150px] h-[40px] gap-1 inline-flex items-center justify-center px-4 py-2 bg-primary-700 font-primary font-500 border border-transparent rounded-lg text-primary-300  text-center text-base tracking-widest hover:bg-primary-400 focus:bg-primary-400 active:bg-primary-900 focus:outline-none transition ease-in-out cursor-pointer duration-150">
                     <span>Alterar foto</span>
                 </label>
                 <input id="profile_picture" name="profile_picture" type="file" class="hidden" />
