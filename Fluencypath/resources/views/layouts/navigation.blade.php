@@ -39,8 +39,6 @@
                         <input id="searchbar" name="searchbar" type="search" aria-label="Pesquisar"
                             placeholder="Pesquisar"
                             class="w-full h-[40px] bg-primary-300 border-none ring-1 ring-neutral-300 text-neutral-800 focus:ring-2 focus:ring-neutral-300 rounded-lg pl-10 ps-8">
-
-                        <!--<x-icon name="home" class="absolute inset-y-0  my-auto left-3 w-5 h-5 pointer-events-none" />-->
                     </div>
                 </form>
             </div>
@@ -48,7 +46,7 @@
             <div class="space-x-8 sm:-my-px sm:ms-10 sm:flex">
                 <button class="w-[100px] h-[40px] border-neutral-200 border-2 rounded-md">
                     <div class="inline-flex justify-between items-center gap-5">
-                        <x-icon name="fire" class="w-[24px] h-[24px]" />
+                        <x-heroicon-s-fire class="w-6 h-6 text-primary-500" />
                         <span class="font-secondary font-medium text-xl text-neutral-500">0</span>
                     </div>
                 </button>

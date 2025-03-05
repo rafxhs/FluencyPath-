@@ -18,8 +18,8 @@
 
 <body class="font-sans antialiased">
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-primary-200">
-        <div class="flex flex-row sm:w-[1000px] sm:h-[700px] shadow-md bg-primary-100 sm:rounded-md">
-            <div class="sm:w-[530px] bg-gradient-to-r from-primary-400 via-primary-500 to-primary-600 sm:rounded-l-md">
+        <div class="flex flex-row sm-w[700px] sm-w[740px] xl:w-[1000px] xl:h-[700px] shadow-md bg-primary-100 xl:rounded-md">
+            <div class="xl:w-[530px] bg-gradient-to-r from-primary-400 via-primary-500 to-primary-600 sm:rounded-l-md">
                <!-- <img src="{{URL::asset('images/login-bg.jpg')}}"> obs.: talvez o fundo seja esse, não sei ainda -->
                 <h1 class="flex justify-center items-center font-primary  text-center text-4xl text-neutral-100">Seja bem-vindo de volta!</h1>
             </div>

@@ -70,9 +70,14 @@
                                 <h1 class="text-cyan-950 font-primary font-bold text-5xl py-10">
                                     Uma nova forma de aprender inglês, baseada em ciência!
                                 </h1>
-                                <p class="font-secondary font-normal text-lg text-neutral-400">
-                                    Baseado na teoria da aquisição da linguagem de Stephen Krashen.
-                                </p>
+                                <div class="flex gap-7">
+                                    <p class="font-secondary font-normal text-lg text-neutral-400">
+                                        Baseado na teoria da aquisição da linguagem de Stephen Krashen.
+                                    </p>
+                                    <a href="{{ 'about' }}">
+                                        <x-heroicon-s-arrow-top-right-on-square class="w-6 h-6 text-primary-400" />
+                                    </a>
+                                </div>
                             </div>
                             <div class="py-10 mt-10">
                                 <div class="w-full h-[50px] flex justify-start items-start">

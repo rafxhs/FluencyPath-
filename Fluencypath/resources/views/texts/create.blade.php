@@ -11,7 +11,7 @@
             </li>
             <li aria-current="page">
                 <div class="flex items-center">
-                    <x-icon name="chevron-right" />
+                    <x-heroicon-s-chevron-right class="w-5 h-5 text-neutral-300" />
                     <span class="ms-1 font-primary font-medium text-sm text-neutral-400 md:ms-2">Adicionar Texto</span>
                 </div>
             </li>
@@ -30,7 +30,7 @@
                     <div class="w-full inline-flex justify-between items-center">
                         <h1 class="my-4 font-primary font-medium text-2xl text-neutral-600">Adicionar Texto</h1>
                         <label for="audio-upload" class="w-[200px] h-[50px] gap-1 inline-flex items-center justify-center px-4 py-2 bg-primary-700 font-primary font-500 border border-transparent rounded-lg text-primary-300  text-center text-base tracking-widest hover:bg-primary-400 focus:bg-primary-400 active:bg-primary-900 focus:outline-none transition ease-in-out cursor-pointer duration-150">
-                            <x-icon name="microphone" />
+                            <x-heroicon-s-microphone class="w-6 h-6 text-primary-100"/>
                             <span>Adicionar áudio</span>
                         </label>
                         <input id="audio-upload" type="file" name="audio" accept="audio/*" required class="hidden">
