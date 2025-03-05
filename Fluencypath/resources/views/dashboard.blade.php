@@ -3,7 +3,7 @@
 <div>
     <div class="flex justify-end">
         <x-secondary-button>
-            <x-heroicon-s-plus class="w-6 h-6  text-primary-300"/>
+            <x-heroicon-s-plus class="w-6 h-6  text-primary-300" />
             <a href="{{ route('texts.create') }}" class="font-primary text-sm text-primary-300">Adicionar texto</a>
         </x-secondary-button>
     </div>
@@ -22,10 +22,30 @@
                     </div>
                 </div>
                 <div>
-                    <p>Roberta Miranda</p>
+                    <!-- <p>Roberta Miranda</p> -->
                 </div>
                 <div>As tags aqui</div>
                 <div>
+
+
+                @php
+                    $user = Auth::user();
+                    $favoriteTexts = $user->favorites()->with('favorites')->get();
+                @endphp
+
+                    @if ($favoriteTexts->isEmpty())
+                    <p>Você ainda não favoritou nenhum texto.</p>
+                    @else
+                    @foreach ($favoriteTexts as $text)
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h3>{{ $text->title }}</h3>
+                            <p>{{ Str::limit($text->content, 100, '...') }}</p>
+                            <a href="{{ route('texts.show', $text->id) }}" class="btn btn-primary">Ver mais</a>
+                        </div>
+                    </div>
+                    @endforeach
+                    @endif
 
                 </div>
             </div>

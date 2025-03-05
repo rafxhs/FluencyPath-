@@ -1,3 +1,4 @@
+@if(Auth::User())
 <nav x-data="{ open: false }" class="bg-primary-200 drop-shadow-sm">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -191,3 +192,68 @@
         </div>
     </div>
 </nav>
+@endif
+
+@if(!(Auth::User()))
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>FluencyPath</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+
+    <!-- Styles / Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+
+<body class="font-sans bg-primary-100 antialiased flex flex-col min-h-screen">
+    <div class="flex-grow">
+        <nav x-data="{ open: false }" class="bg-primary-100">
+            <!-- Primary Navigation Menu -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-[80px]">
+                    <div class="flex">
+                        <!-- Logo -->
+                        <div class="shrink-0 flex items-center">
+                            <a href="{{ route('dashboard') }}">
+                                <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                            </a>
+                        </div>
+
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <x-nav-link :href="route('about')" :active="request()->routeIs('about')">
+                                {{ __('Quem somos') }}
+                            </x-nav-link>
+                        </div>
+                    </div>
+
+                    <div class="inline-flex justify-center items-center gap-5">
+                        <div class="space-x-2">
+                            <a
+                                href="{{ route('login') }}"
+                                class="w-[120px] h-[40px] font-primary font-semibold text-primary-700  text-center text-base hover:text-primary-400 focus:text-primary-800 px-6 py-4">
+                                {{ __('Entrar') }}
+                            </a>
+
+                        </div>
+
+                        <div class="space-x-2">
+                            <a
+                                href="{{ route('register') }}"
+                                class="w-[120px] h-[40px] font-primary text-primary-300  text-center text-base bg-primary-700 hover:bg-primary-400 focus:bg-primary-800 px-6 py-4 rounded-lg">
+                                {{ __('Cadastre-se') }}
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+@endif
