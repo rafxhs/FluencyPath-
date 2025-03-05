@@ -1,5 +1,3 @@
-// Script responsavel pela sincronização entre audio e texto - Importado no Show.blade.php
-
 document.addEventListener("DOMContentLoaded", function () {
     let waveSurfer;
     let initialized = false;
@@ -7,7 +5,15 @@ document.addEventListener("DOMContentLoaded", function () {
     let sentences = document.querySelectorAll(".sentence");
     const playButton = document.getElementById("playButton");
 
-    // Inicialização do Wavesurfer e Carregamento do Áudio
+    // Obtém os timestamps do JSON embutido no HTML
+    let timestampsJson = document.getElementById("timestamps-data");
+    if (timestampsJson) {
+        sentenceTimestamps = JSON.parse(timestampsJson.textContent);
+    } else {
+        console.error("Erro: Nenhum dado de timestamps encontrado.");
+    }
+
+    // Inicializa o Wavesurfer e carrega o áudio
     function initializeWavesurfer() {
         waveSurfer = WaveSurfer.create({
             container: "#waveform",
@@ -26,11 +32,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         console.log("Carregando áudio:", audioPath);
         waveSurfer.load(audioPath);
-
-        waveSurfer.on("ready", function () {
-            let totalDuration = waveSurfer.getDuration();
-            detectSpeechStart(totalDuration);
-        });
 
         waveSurfer.on("audioprocess", function () {
             highlightCurrentSentence(waveSurfer.getCurrentTime());
@@ -57,64 +58,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    function detectSpeechStart(totalDuration) {
-        let decodedData = waveSurfer.getDecodedData();
-        if (!decodedData) {
-            console.error("Erro: Dados de áudio não disponíveis.");
-            return;
-        }
-
-        let channelData = decodedData.getChannelData(0);
-        let sampleRate = decodedData.sampleRate;
-
-        // Calcular energia média para determinar um limiar adaptativo
-        let meanEnergy = channelData.reduce((sum, val) => sum + Math.abs(val), 0) / channelData.length;
-        let threshold = meanEnergy * 1.5; // Ajusta automaticamente o limiar
-
-        let speechStart = 0;
-        for (let i = 0; i < channelData.length; i++) {
-            if (Math.abs(channelData[i]) > threshold) {
-                speechStart = i / sampleRate;
-                break;
-            }
-        }
-
-        console.log("Início da fala detectado em:", speechStart);
-        calculateTimestamps(totalDuration, speechStart);
-    }
-
-    function calculateTimestamps(totalDuration, speechStart) {
-        let numSentences = sentences.length;
-        let totalWords = 0;
-        let wordsPerSentence = [];
-
-        sentences.forEach(sentence => {
-            let words = sentence.textContent.trim().split(/\s+/).length;
-            wordsPerSentence.push(words);
-            totalWords += words;
-        });
-
-        let accumulatedTime = speechStart;
-        sentenceTimestamps = [];
-
-        wordsPerSentence.forEach((words, index) => {
-            let sentenceDuration = (words / totalWords) * (totalDuration - speechStart);
-            sentenceDuration += 0.5;
-
-            sentenceTimestamps.push(accumulatedTime);
-            accumulatedTime += sentenceDuration;
-        });
-
-        console.log("Timestamps ajustados:", sentenceTimestamps);
-    }
-
-    // Destaque das Frases de Texto
+    // Destaque das frases de texto conforme os timestamps
     function highlightCurrentSentence(currentTime) {
         sentences.forEach((sentence, index) => {
-            if (
-                currentTime >= sentenceTimestamps[index] &&
-                (index === sentenceTimestamps.length - 1 || currentTime < sentenceTimestamps[index + 1])
-            ) {
+            let start = sentenceTimestamps[index]?.start || 0;
+            let end = sentenceTimestamps[index]?.end || 0;
+
+            if (currentTime >= start && currentTime < end) {
                 sentence.classList.add("highlight");
             } else {
                 sentence.classList.remove("highlight");

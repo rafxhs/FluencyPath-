@@ -30,7 +30,10 @@
         <div id="waveform"></div>
         <button id="playButton" data-audio="{{ Storage::url($texts->audio->file_path) }}">▶️ Play</button>
 
-
+        <!-- Timestamps ocultos para o JS -->
+        <script type="application/json" id="timestamps-data">
+            {!! json_encode($texts->audio->transcription->timestamps ?? []) !!}
+        </script>
 
         <!-- TEXTO -->
         <p id="text-content">

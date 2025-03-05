@@ -5,6 +5,7 @@ use App\Http\Controllers\TextController;
 use App\Http\Controllers\FavoriteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\GoogleController;
+use App\Http\Controllers\TranscriptionController;
 
 
 
@@ -34,8 +35,6 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/texts/{id}/favorite', [FavoriteController::class, 'toggleFavorite'])->name('texts.toggleFavorite');
     Route::get('/texts/{id}/favorites-count', [FavoriteController::class, 'getFavoritesCount'])->name('texts.getFavoritesCount');
-
-
 
 });
 
