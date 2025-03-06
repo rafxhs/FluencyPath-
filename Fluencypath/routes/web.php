@@ -13,11 +13,11 @@ use App\Http\Controllers\ContactController;
 
 
 Route::get('/', function () {
-    if (auth()->check()) {
+    if (Auth::check()) {
         return redirect()->route('dashboard');
     }
     return view('welcome');
-});
+})->name('/');
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
