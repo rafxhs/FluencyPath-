@@ -21,21 +21,32 @@
     @else
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
         @foreach($flashcards as $flashcard)
-        <div x-data="{ flipped: false }" @click="flipped = !flipped" class="relative w-full h-60 perspective">
+        <div x-data="{ flipped: false }" @click="flipped = !flipped" class="relative w-full h-60 perspective" data-word="{{ $flashcard->word }}">
+    
             <!-- Card Container -->
             <div class="w-full h-full transition-transform duration-500 transform-style preserve-3d" :class="{ 'rotate-y-180': flipped }">
                 <!-- Frente do Card -->
                 <div class="absolute w-full h-full bg-white shadow-md rounded-lg flex flex-col items-center justify-center p-6 backface-hidden">
                     <h5 class="text-2xl font-bold text-center">{{ $flashcard->word }}</h5>
+                    <button onclick="speakText(event,'{{ $flashcard->word }}')" class="absolute top-2 right-2 text-blue-500 hover:text-blue-700">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
+                        </svg>
+                    </button>
                     <p class="text-gray-700 text-center mt-2">{!! $flashcard->sentence_en !!}</p>
                 </div>
                 <!-- Verso do Card -->
                 <div class="absolute w-full h-full bg-blue-50 border-blue-200 shadow-md rounded-lg p-6 transform rotate-y-180 backface-hidden flex flex-col justify-center">
-                    <p class="text-gray-500 text-center">{{ $flashcard->word }} - {!! $flashcard->sentence_pt !!}</p>
-                    <p class="text-gray-500 text-center"><em>{{ $flashcard->ipa }}</p></em>
+                    <p class="text-gray-500 text-center word-translation">{{ $flashcard->word }} - {!! $flashcard->sentence_pt !!}</p>
+                    <p class="text-gray-500 text-center"><em>{{ $flashcard->ipa }}</em></p>
                     <p class="font-medium mt-2">Exemplo:</p>
-                    <p class="text-gray-700">{!! $flashcard->sentence_en !!}</p>
-                    <p class="text-gray-700">("aqui é a tradução do frase"!!)</p>
+                    <p class="text-gray-700 sentence-en">{!! $flashcard->sentence_en !!}</p>
+                    <p class="text-gray-700 sentence-pt"></p>
+                    <button type="button" onclick="speakText(event,'{{ $flashcard->sentence_en}}')" class="absolute top-2 right-2 text-blue-500 hover:text-blue-700">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
+                        </svg>
+                    </button>
                     <form action="{{ route('flashcards.destroy', $flashcard->id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja apagar este flashcard?');">
                         @csrf
                         @method('DELETE')
@@ -56,7 +67,19 @@
 <!-- Incluindo Alpine.js -->
 <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
-<!-- Estilos Extras -->
+<!-- Script para o audio -->
+<script>
+    function speakText(event, text) {
+        event.stopPropagation(); // Evita que o card vire
+
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'en-US';
+        utterance.rate = 1; // Velocidade normal
+        speechSynthesis.speak(utterance);
+    }
+</script>
+
+<!-- Estilos da animação do card -->
 <style>
     .perspective {
         perspective: 1000px;
@@ -66,6 +89,9 @@
     }
     .backface-hidden {
         backface-visibility: hidden;
+        position: absolute;
+        width: 100%;
+        height: 100%;
     }
     .rotate-y-180 {
         transform: rotateY(180deg);
