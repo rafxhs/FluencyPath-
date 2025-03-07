@@ -54,6 +54,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/flashcards', [FlashcardController::class, 'store'])->name('flashcards.index');
     Route::get('/flashcards', [FlashcardController::class, 'index'])->name('flashcards.index');
     Route::delete('/flashcards/{id}', [FlashcardController::class, 'destroy'])->name('flashcards.destroy');
+    Route::get('/word/{word}', [WordController::class, 'getWordData']);
 
 
 
@@ -66,7 +67,6 @@ Route::get('/about', function () {
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('redirect.google');
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
-Route::get('/word/{word}', [WordController::class, 'getWordData']);
 Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
 
