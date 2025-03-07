@@ -1,3 +1,5 @@
+// Script responsavel pelo card de detalhes ao clicar na palavra do texto - Importado no Show.blade.php
+
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".word").forEach(word => {
         word.addEventListener("click", async function (event) {

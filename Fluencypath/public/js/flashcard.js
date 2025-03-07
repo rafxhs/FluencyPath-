@@ -1,3 +1,5 @@
+// Script responsavel por gerenciar API's Usadas no Flascard - Importado no flashcards/index.blade.php
+
 document.addEventListener("DOMContentLoaded", async function () {
     const flashcards = document.querySelectorAll("[data-word]");
 
@@ -14,7 +16,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             if (Array.isArray(data) && data.length > 0) {
                 let exampleSentence = null;
 
-                // Percorre os significados para encontrar um exemplo
+                // Percorre os significados para encontrar um exemplo (frase)
                 for (const meaning of data[0].meanings) {
                     for (const definition of meaning.definitions) {
                         if (definition.example) {
@@ -34,7 +36,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             console.error(`Erro ao buscar frase para "${word}":`, error);
         }
 
-        // Agora chama a API de tradução MyMemory
+        // API de tradução MyMemory
         const sentenceEn = sentenceEnElement.textContent.trim(); // Pega a frase correta
         if (sentenceEn) {
             try {
@@ -54,23 +56,35 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 });
 
-function speakText(event, button,) {
-    event.stopPropagation(); // Evita virar o card
+// Função para o funcionamento da leitura e das frases e palvras em ingles
+function speakText(event, button) {
+    event.stopPropagation(); // Evita que o card vire
 
-    // Encontra a frase correta no DOM (a frase vinda da API)
-    let sentenceElement = button.closest('.backface-hidden').querySelector('.sentence-en');
+    let flashcard = button.closest('.relative'); // O card inteiro
+    let frontCard = flashcard.querySelector('.backface-hidden:not(.rotate-y-180)'); // Frente do card
+    let backCard = flashcard.querySelector('.rotate-y-180'); // Verso do card
+    let textToSpeak = "";
 
-    if (sentenceElement ) {
-        let sentence = sentenceElement.textContent.trim();
-        if (sentence) {
-            const utterance = new SpeechSynthesisUtterance(sentence);
-            utterance.lang = 'en-US'; // Define o idioma para inglês americano
-            utterance.rate = 1; // Velocidade normal
-            speechSynthesis.speak(utterance);
-        } else {
-            console.error('Nenhuma frase encontrada para leitura.');
+    if (button.closest('.rotate-y-180')) {
+        // Está no verso -> pegar a frase
+        let sentenceElement = backCard.querySelector('.sentence-en');
+        if (sentenceElement) {
+            textToSpeak = sentenceElement.textContent.trim();
         }
     } else {
-        console.error('Elemento da frase não encontrado.');
+        // Está na frente -> pegar a palavra
+        let wordElement = frontCard.querySelector('h5'); // O <h5> elemnto onde esta a a palavra
+        if (wordElement) {
+            textToSpeak = wordElement.textContent.trim();
+        }
+    }
+
+    if (textToSpeak) {
+        const utterance = new SpeechSynthesisUtterance(textToSpeak);
+        utterance.lang = 'en-US'; // Define o idioma para inglês americano
+        utterance.rate = 1; // Velocidade normal
+        speechSynthesis.speak(utterance);
+    } else {
+        console.error('Nenhum texto encontrado para leitura.');
     }
 }
