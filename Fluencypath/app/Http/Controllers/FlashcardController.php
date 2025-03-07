@@ -21,12 +21,12 @@ class FlashcardController extends Controller
         $word = $request->word;
         $sentence_en = $request->sentence_en;
         $pronunciation = $request->pronunciation ?? '/unknown/';
-        $sentence_pt = str_replace($word, "<b>$word</b>", $request->translation);
+        $sentence_pt = str_replace($word, $word, $request->translation);
 
         // Salvar no banco
         Flashcard::create([
             'word' => $word,
-            'sentence_en' => str_replace($word, "<b>$word</b>", $sentence_en),
+            'sentence_en' => str_replace($word, $word, $sentence_en),
             'sentence_pt' => $sentence_pt,
             'ipa' => $pronunciation,
             'user_id' => Auth::id(),
