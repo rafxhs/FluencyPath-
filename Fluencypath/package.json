@@ -17,6 +17,6 @@
         "vite": "^6.0"
     },
     "dependencies": {
-        "@heroicons/react": "^2.2.0"
+        "wavesurfer.js": "^7.9.0"
     }
 }

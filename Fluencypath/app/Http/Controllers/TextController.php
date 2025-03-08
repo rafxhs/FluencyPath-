@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Text;
 use App\Models\Audio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TextController extends Controller
 {
@@ -46,8 +47,6 @@ class TextController extends Controller
         ]);
 
         return redirect()->route('texts.index')->with('success', 'Texto e áudio adicionados com sucesso!');
-
-
     }
 
     public function edit($id)
@@ -71,7 +70,7 @@ class TextController extends Controller
             'tag' => $request->input('tag'),
         ]);
 
-        return redirect()->route('texts.index')->with('success', 'Text and audio updated successfully!');
+        return redirect()->route('texts.index')->with('success', 'Texto e  áudio atualizados com sucesso!');
     }
 
     public function show($id)
@@ -83,8 +82,14 @@ class TextController extends Controller
     public function destroy($id)
     {
         $text = Text::with('audio')->findOrFail($id);
+
+        if ($text->audio) {
+            Storage::disk('public')->delete($text->audio->file_path);
+            $text->audio->delete();
+        }
+
         $text->delete();
 
-        return redirect()->route('texts.index')->with('success', 'Text and audio deleted successfully!');
+        return redirect()->route('texts.index')->with('success', 'Texto e áudio excluídos com sucesso!');
     }
 }
