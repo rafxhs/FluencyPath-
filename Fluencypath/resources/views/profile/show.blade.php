@@ -25,9 +25,9 @@
         </ol>
     </div>
 
-    <div class="flex flex-row items-center p-4 sm:p-8 bg-white shadow sm:rounded-lg gap-10">
-        <div class="max-w-xl">
-            <div class="w-full inline-flex justify-between items-center">
+    <div class="flex-row items-center p-4 sm:p-8 bg-white shadow sm:rounded-lg gap-10">
+        <div class="max-w-xl m-4">
+            <div class="w-full inline-flex justify-between items-center mb-10">
                 <h2 class="font-primary font-medium text-xl text-neutral-600">
                     {{ __('Meu Perfil') }}
                 </h2>
@@ -37,14 +37,14 @@
                     @endif
                 </button>
             </div>
-            <div class="mt-2">
+            <div class="flex flex-row mt-2">
                 <img src="{{ Auth::user()->profilePicture ? asset('storage/' . Auth::user()->profilePicture->path) : asset('images/default-profile.png') }}"
                     alt="Foto de Perfil Atual"
                     class="w-32 h-32 rounded-full object-cover drop-shadow-md">
-            </div>
-            <div>
-                <p class="font-primary font-medium text-2xl text-neutral-600">{{ $user->name }}</p>
-                <p class="font-primary font-base text-2xl text-neutral-600">{{ $user->email }}</p>
+                <div class="m-8">
+                    <p class="font-primary font-medium text-2xl text-neutral-600">{{ $user->name }}</p>
+                    <p class="font-primary font-base text-xl text-neutral-600">{{ $user->email }}</p>
+                </div>
             </div>
             <input id="profile_picture" name="profile_picture" type="file" class="hidden" />
             <x-input-error class="mt-2" :messages="$errors->get('profile_picture')" />
