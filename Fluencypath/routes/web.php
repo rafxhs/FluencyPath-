@@ -24,7 +24,8 @@ Route::middleware('auth')->group(function () {
         $user = auth()->user();
         $userTexts = $user->texts()->latest()->take(3)->get();
         $favoritedTexts = Text::whereHas('favorites')->latest()->take(3)->get();
-        return view('dashboard', compact('favoritedTexts', 'userTexts'));
+        $texts = Text::latest()->take(3)->get();
+        return view('dashboard', compact('favoritedTexts', 'userTexts', 'texts'));
     })->name('dashboard');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
