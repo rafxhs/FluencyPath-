@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="container">
-    <div>
-        <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+<section class="container max-w-7xl mx-auto px-4 sm:px-10 lg:px-10">
+    <div class="w-full">
+        <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse pt-10">
             <li>
                 <div class="flex items-center">
                     <a href="{{route('texts.index')}}" class="ms-1 font-primary font-medium text-sm text-neutral-400 md:ms-2 dark:hover:text-neutral-300">Textos</a>
@@ -19,8 +19,8 @@
     </div>
 
     <div class="flex py-10">
-        <div class=" w-[1240px] h-[900px]  sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg py-6 px-6">
+        <div class=" w-[1240px] h-[900px]">
+            <div class="bg-white overflow-hidden shadow-md sm:rounded-lg py-6 px-14">
                 <form
                     action="{{ route('texts.store') }}"
                     method="POST"
@@ -40,7 +40,7 @@
                         type="text"
                         name="title"
                         required
-                        class="border border-neutral-300 p-2 focus:outline-none rounded-lg">
+                        class="border border-neutral-300 p-2 rounded-lg focus:ring-neutral-300 focus:ring-opacity-100 focus:ring-1 focus:outline-none">
 
                     <label for="tag" class="text-sm font-semibold">Tags</label>
                     <input
