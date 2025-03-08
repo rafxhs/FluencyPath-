@@ -2,7 +2,7 @@
 
 @section('content')
 
-<a href="{{ route('dashboard') }}">
+<a href="{{ route('/') }}">
     <img src="{{URL::asset('images/logo-primaria-horizontal.svg')}}" alt="Logo" class="h-8 w-auto object-contain mb-8">
 </a>
 

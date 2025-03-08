@@ -20,11 +20,11 @@
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-primary-200">
         <div class="flex flex-row sm-w[700px] sm-w[740px] xl:w-[1000px] xl:h-[700px] shadow-md bg-primary-100 xl:rounded-md">
             <div class="xl:w-[530px] relative sm:rounded-l-md">
-                <a href="{{ route('dashboard') }}">
+                <a href="{{ route('/') }}">
                     <img src="{{URL::asset('images/logo-cor-branca-primaria-horizontal.svg')}}" alt="Logo" class="h-8 absolute w-auto object-contain m-8">
                 </a>
                 <h1 class="flex items-center absolute justify-center font-primary font-medium text-center text-4xl text-neutral-100 m-20">Seja bem-vindo de volta!</h1>
-                <img src="{{URL::asset('images/login-bg.jpg')}}"> 
+                <img src="{{URL::asset('images/login-bg.jpg')}}">
             </div>
 
             <div class="w-full sm:w-[470px] mt-6 pt-30 px-12 py-12 bg-primary-100 overflow-hidden sm:rounded-r-md">

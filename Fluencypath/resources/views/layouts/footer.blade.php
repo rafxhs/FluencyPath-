@@ -1,7 +1,7 @@
 <footer class="flex items-center justify-center w-full bg-primary-700 h-[400px]">
   <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between pt-10">
-      <a href="{{ route('dashboard') }}">
+      <a href="{{ route('/') }}">
         <img src="{{URL::asset('images/logo-cor-branca-primaria-horizontal.svg')}}" alt="Logo" class="h-8 w-auto object-contain">
       </a>
 

@@ -2,3 +2,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* Estilo sincronização das palaravras */
+.sentence {
+    transition: background-color 0.2s ease;
+}
+
+.sentence.highlight {
+    background-color: lightblue;
+    font-weight: bold;
+}
+
+/* Estilo do card de detalhe das palaras*/
+#tooltip {
+    position: absolute;
+    background-color: white;
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s ease-in-out;
+    z-index: 1000;
+    border: 1px solid #ddd;
+}
+.hidden {
+    display: none;
+}
+.word {
+    cursor: pointer;
+}
+
+.word:hover{
+    background-color: cyan;
+    font-size: 18px;
+}
