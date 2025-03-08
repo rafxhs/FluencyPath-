@@ -5,6 +5,7 @@ document.querySelectorAll('.favorite-btn').forEach(button => {
         const isFavorited = this.dataset.favorited === 'true'; // Verifica se está favoritado
         const favoriteIcon = this.querySelector('.favorite-icon'); // Ícone do coração
         const favoritesCount = this.querySelector('.favorites-count'); // Contador de favoritos
+        const card = this.closest('article');
 
         // Obtém o CSRF Token do meta tag
         const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
@@ -33,6 +34,10 @@ document.querySelectorAll('.favorite-btn').forEach(button => {
                     this.dataset.favorited = 'false';
                 }
                 favoritesCount.textContent = data.favorites_count; // Atualiza o contador
+
+                if (!data.favorited && window.location.pathname !== '/favorites') {
+                    card.style.display = 'none'; // Remove o card da tela
+                }
             })
             .catch(error => {
                 console.error('Erro:', error); // Log do erro
