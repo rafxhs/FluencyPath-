@@ -30,7 +30,7 @@
                     <div class="w-full inline-flex justify-between items-center">
                         <h1 class="my-4 font-primary font-medium text-2xl text-neutral-600">Adicionar Texto</h1>
                         <label for="audio-upload" class="w-[200px] h-[50px] gap-1 inline-flex items-center justify-center px-4 py-2 bg-primary-700 font-primary font-500 border border-transparent rounded-lg text-primary-300  text-center text-base tracking-widest hover:bg-primary-400 focus:bg-primary-400 active:bg-primary-900 focus:outline-none transition ease-in-out cursor-pointer duration-150">
-                            <x-heroicon-s-microphone class="w-6 h-6 text-primary-100"/>
+                            <x-heroicon-s-microphone class="w-6 h-6 text-primary-100" />
                             <span>Adicionar áudio</span>
                         </label>
                         <input id="audio-upload" type="file" name="audio" accept="audio/*" required class="hidden">
@@ -65,21 +65,19 @@
         </div>
     </div>
 
-        <a href="{{ route('texts.index') }}" class="bg-blue-300 text-white p-2 rounded hover:bg-blue-600 ">Voltar</a>
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css">
+    <script>
+        const predefinedTags = ["Educação", "Música", "Ciência", "Saúde", "Tecnologia", "História", "Literatura", "Arte", "Filosofia", "Psicologia", "Esportes", "Negócios", "Economia", "Política", "Meio Ambiente", "Entretenimento", "Cinema", "Teatro", "Religião", "Espiritualidade", "Viagens", "Gastronomia", "Direito", "Matemática", "Astronomia", "Física", "Química", "Biologia", "Sociologia", "Linguística", "Programação", "Jogos", "Autodesenvolvimento", "Poesia", "Fotografia", "Meditação", "Moda", "Bem-estar", "Notícias", "Inovação", "Marketing", "Finanças", "Arquitetura", "Agricultura", "Inteligência Artificial", "Robótica", "Segurança da Informação", "Podcasts", "Curiosidades", "Cultura Pop", "Outros"]
+        const input = document.querySelector('#tags-input');
+        const tagify = new Tagify(input, {
+            whitelist: predefinedTags,
+            enforceWhitelist: false,
+            dropdown: {
+                enabled: 1,
+            },
+        });
+    </script>
 
-        <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css">
-        <script>
-            const predefinedTags = ["Educação", "Música", "Ciência", "Saúde", "Tecnologia", "História", "Literatura", "Arte", "Filosofia", "Psicologia", "Esportes", "Negócios", "Economia", "Política", "Meio Ambiente", "Entretenimento", "Cinema", "Teatro", "Religião", "Espiritualidade", "Viagens", "Gastronomia", "Direito", "Matemática", "Astronomia", "Física", "Química", "Biologia", "Sociologia", "Linguística", "Programação", "Jogos", "Autodesenvolvimento", "Poesia", "Fotografia", "Meditação", "Moda", "Bem-estar", "Notícias", "Inovação", "Marketing", "Finanças", "Arquitetura", "Agricultura", "Inteligência Artificial", "Robótica", "Segurança da Informação", "Podcasts", "Curiosidades", "Cultura Pop", "Outros"]
-            const input = document.querySelector('#tags-input');
-            const tagify = new Tagify(input, {
-                whitelist: predefinedTags,
-                enforceWhitelist: false,
-                dropdown: {
-                    enabled: 1,
-                },
-            });
-        </script>
-
-</div>
-@endsection
+    </div>
+    @endsection

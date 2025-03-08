@@ -3,7 +3,7 @@
 @section('content')
 <section class="max-w-7xl mx-auto px-4 sm:px-10 lg:px-10">
     <header>
-        <div class="w-full h-[400px] bg-neutral-200">
+        <div class="w-full h-[300px] bg-neutral-200">
         </div>
 
         <div>
@@ -39,7 +39,7 @@
 
                 <x-slot name="content">
                     <x-dropdown-link :href="route('texts.index')">Textos</x-dropdown-link>
-                    <x-dropdown-link :href="route('about')">Flashcards</x-dropdown-link>
+                    <x-dropdown-link :href="route('flashcards.index')">Flashcards</x-dropdown-link>
                     <x-dropdown-link :href="route('profile.edit')">Meus textos</x-dropdown-link>
                     <x-dropdown-link :href="route('favorites.index')">Meus favoritos</x-dropdown-link>
                 </x-slot>

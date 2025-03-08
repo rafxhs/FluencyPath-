@@ -6,7 +6,21 @@
 <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
 <section class="container">
-    <h1 class="my-4">Texto</h1>
+    <div>
+        <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+            <li>
+                <div class="flex items-center">
+                    <a href="{{route('texts.index')}}" class="ms-1 font-primary font-medium text-sm text-neutral-400 md:ms-2 dark:hover:text-neutral-300">Textos</a>
+                </div>
+            </li>
+            <li aria-current="page">
+                <div class="flex items-center">
+                    <x-heroicon-s-chevron-right class="w-5 h-4 text-neutral-300" />
+                    <span class="ms-1 font-primary font-medium text-sm text-neutral-400 md:ms-2">Meus Favoritos</span>
+                </div>
+            </li>
+        </ol>
+    </div>
     <div class="card" style="border: 1px solid #ccc; padding: 15px; margin: 15px; width: 50%">
         <h3>{{ $texts->title }}</h3>
 
@@ -63,15 +77,15 @@
     </div>
 
     <a href="{{ route('texts.index') }}" style="text-decoration: none; color: blue;">Voltar</a>
-</div>
+    </div>
 
-<!-- Importa o Wavesurfer -->
-<script src="https://unpkg.com/wavesurfer.js"></script>
-<!-- Importa o script para a sincronização -->
-<script src="{{ asset('/js/audio-sync.js') }}"></script>
-<!-- Importa o script do card das palras -->
-<script src="{{ asset('/js/word-tooltip.js') }}"></script>
+    <!-- Importa o Wavesurfer -->
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+    <!-- Importa o script para a sincronização -->
+    <script src="{{ asset('/js/audio-sync.js') }}"></script>
+    <!-- Importa o script do card das palras -->
+    <script src="{{ asset('/js/word-tooltip.js') }}"></script>
 
 
-<div id="tooltip" class="hidden absolute bg-white p-3 shadow-md border rounded-md"></div>
-@endsection
+    <div id="tooltip" class="hidden absolute bg-white p-3 shadow-md border rounded-md"></div>
+    @endsection
