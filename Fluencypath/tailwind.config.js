@@ -59,8 +59,10 @@ export default {
                     300: '#A3E3ED',
                     400: '#A6C7D8',
                     500: '#E63946',
-                    600: 'FFD166',
-                    700: '6FB3D2',
+                    600: '#FFD166',
+                    700: '#6FB3D2',
+                    800: '#F05437',
+                    900: '#FFC833',
                 },
                 // Neutral Colors
                 'neutral': {

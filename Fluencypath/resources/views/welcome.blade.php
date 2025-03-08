@@ -19,13 +19,13 @@
     <div class="flex-grow">
         <nav x-data="{ open: false }" class="bg-primary-100">
             <!-- Primary Navigation Menu -->
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto px-4 sm:px-2 lg:px-2">
                 <div class="flex justify-between h-[80px]">
                     <div class="flex">
                         <!-- Logo -->
                         <div class="shrink-0 flex items-center">
                             <a href="{{ route('/') }}">
-                                <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                            <img src="{{URL::asset('images/logo-primaria-horizontal.svg')}}" alt="Logo" class="h-10 w-auto object-contain">
                             </a>
                         </div>
 
@@ -158,9 +158,11 @@
 
 
             <section class="w-full h-[620px]">
-                <div class="items-center justify-center flex flex-col py-10">
-                    <h2 class="text-cyan-950 text-center font-primary font-bold text-4xl">Entre em contato</h2>
-                    <p class="text-gray-700 text-center  mt-2">Estamos aqui para ajudar! Envie suas dúvidas, sugestões ou qualquer outro feedback. Sua opinião é muito importante para nós.</p>
+                <div class="flex items-center justify-center py-10">
+                    <div class="px-5">
+                        <h2 class="text-cyan-950 text-center font-primary font-bold text-4xl">Precisa de ajuda? Entre em contato pelo email</h2>
+                        <p class="text-gray-700 text-center  mt-2">Envie suas dúvidas, sugestões ou qualquer outro feedback. Sua opinião é muito importante para nós.</p>
+                    </div>
                     <form action="{{ route('contact.send') }}" method="POST" class="w-full max-w-lg mt-5 bg-white p-6 rounded-lg shadow-lg">
                         @csrf
                         <div class="mb-4">
@@ -190,8 +192,8 @@
                     <div class="grid grid-cols-4 gap-5 my-20">
                         <div class="p-4">
                             <div class="flex flex-col">
-                                <h3>Fácil aprendizagem</h3>
-                                <p>Uma plataforma simples de se usar e fluída.</p>
+                                <h3 class="font-primary font-bold text-xl text-neutral-500">Fácil aprendizagem</h3>
+                                <p class="font-primary font-normal text-xl text-neutral-400">Uma plataforma simples de se usar e fluída.</p>
                                 <hr>
                             </div>
                             <div class="flex flex-row">
@@ -201,8 +203,8 @@
                         </div>
                         <div class="p-4">
                             <div class="flex flex-col">
-                                <h3>Abordagem excepcional</h3>
-                                <p>Textos sincronizados foi diferencial na maneira de entendimento.</p>
+                                <h3 class="font-primary font-bold text-xl text-neutral-500">Abordagem excepcional</h3>
+                                <p class="font-primary font-normal text-xl text-neutral-400">Textos sincronizados foi diferencial na maneira de entendimento.</p>
                                 <hr>
                             </div>
                             <div class="flex flex-row">
@@ -213,8 +215,8 @@
 
                         <div class="p-4">
                             <div class="flex flex-col">
-                                <h3>Favoritar</h3>
-                                <p>Adorei a possibilidade de favoritar os textos do meu interesse.</p>
+                                <h3 class="font-primary font-bold text-xl text-neutral-500">Favoritar</h3>
+                                <p class="font-primary font-normal text-xl text-neutral-400">Adorei a possibilidade de favoritar os textos do meu interesse.</p>
                                 <hr>
                             </div>
                             <div class="flex flex-row">
@@ -225,8 +227,8 @@
 
                         <div class="p-4">
                             <div class="flex flex-col">
-                                <h3>Flashcards</h3>
-                                <p>Senti uma grande evolução no meu vocabulário.</p>
+                                <h3 class="font-primary font-bold text-xl text-neutral-500">Flashcards</h3>
+                                <p class="font-primary font-normal text-xl text-neutral-400">Senti uma grande evolução no meu vocabulário.</p>
                                 <hr>
                             </div>
                             <div class="flex flex-row">
