@@ -2,9 +2,9 @@
 
 @section('content')
 
-<div class="mb-10 font-primary font-bold text-2xl text-neutral-600 card-header">
-    <h1>FluencyPath</h1>
-</div>
+<a href="{{ route('dashboard') }}">
+    <img src="{{URL::asset('images/logo-primaria-horizontal.svg')}}" alt="Logo" class="h-8 w-auto object-contain mb-8">
+</a>
 
 <form method="POST" action="{{ route('register') }}">
     @csrf
