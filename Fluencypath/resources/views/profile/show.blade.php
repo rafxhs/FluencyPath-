@@ -25,18 +25,19 @@
         </ol>
     </div>
 
-    <div class="flex-row items-center p-4 sm:p-8 bg-white shadow sm:rounded-lg gap-10">
-        <div class="max-w-xl m-4">
-            <div class="w-full inline-flex justify-between items-center mb-10">
+    <div class="w-500 flex flex-row items-center p-4 sm:p-8 bg-white shadow sm:rounded-lg gap-10">
+        <div class="max-w-xl">
+            <div class="w-full inline-flex justify-between items-center">
                 <h2 class="font-primary font-medium text-xl text-neutral-600">
                     {{ __('Meu Perfil') }}
                 </h2>
-                <button class="w-[150px] h-[40px] gap-1 inline-flex items-center justify-center px-4 py-2 bg-primary-700 font-primary font-500 border border-transparent rounded-lg text-primary-300  text-center text-base tracking-widest hover:bg-primary-400 focus:bg-primary-400 active:bg-primary-900 focus:outline-none transition ease-in-out cursor-pointer duration-150">
+                <button class="w-[150px] h-[40px] absolute right-24 mt-10 gap-1 inline-flex items-center justify-center px-4 py-2 bg-primary-700 font-primary font-500 border border-transparent rounded-lg text-primary-300  text-center text-base tracking-widest hover:bg-primary-400 focus:bg-primary-400 active:bg-primary-900 focus:outline-none transition ease-in-out cursor-pointer duration-150">
                     @if(Auth::id() === $user->id)
                     <a href="{{ route('profile.edit') }}" class="font-primary text-sm text-center text-primary-100">Editar Perfil</a>
                     @endif
                 </button>
             </div>
+<<<<<<< HEAD
             <div class="flex flex-row mt-2">
                 <img src="{{ Auth::user()->profilePicture ? asset('storage/' . Auth::user()->profilePicture->path) : asset('images/default-profile.png') }}"
                     alt="Foto de Perfil Atual"
@@ -45,7 +46,20 @@
                     <p class="font-primary font-medium text-2xl text-neutral-600">{{ $user->name }}</p>
                     <p class="font-primary font-base text-xl text-neutral-600">{{ $user->email }}</p>
                 </div>
+=======
+            <div class="flex flex-row  items-center">
+            <div class="mt-10">
+                <img src="{{ Auth::user()->profilePicture ? asset('storage/' . Auth::user()->profilePicture->path) : asset('images/default-profile.png') }}"
+                    alt="Foto de Perfil Atual"
+                    class="w-32 h-32 rounded-full object-cover drop-shadow-md">
             </div>
+            <div class="mt-10 ml-5 aling-itens">
+                <p class="font-primary font-medium text-2xl text-neutral-600">{{ $user->name }}</p>
+                <p class="font-primary font-base text-xl text-neutral-600">{{ $user->email }}</p>
+>>>>>>> detalhes-front
+            </div>
+            </div>
+
             <input id="profile_picture" name="profile_picture" type="file" class="hidden" />
             <x-input-error class="mt-2" :messages="$errors->get('profile_picture')" />
         </div>

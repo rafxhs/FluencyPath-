@@ -175,14 +175,16 @@
                     <x-slot name="content">
 
                         <x-dropdown-link :href="route('profile.show', ['id' => Auth::user()->id])">
-                            <div class="flex flex-row">
+                            <div class="flex flex-row p-0">
                                 <img src="{{ Auth::user()->profilePicture ? asset('storage/' . Auth::user()->profilePicture->path) : asset('images/default-profile.png') }}"
                                     alt="Foto de Perfil"
-                                    class="w-14 h-14 rounded-full object-cover">
-                                <div class="flex flex-col">
-                                    <span>{{ Auth::user()->name }}</span>
-                                    <span>{{ Auth::user()->email}}</span>
+                                    class="w-10 h-10 rounded-full object-cover">
+                                <div class="flex flex-col m-1 aling-itens">
+                                <span>{{ Auth::user()->name }}</span>
                                 </div>
+                            </div>
+                            <div class="flex flex-col m-1 aling-itens">
+                                <span>{{ Auth::user()->email}}</span>
                             </div>
                         </x-dropdown-link>
 

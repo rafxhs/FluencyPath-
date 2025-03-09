@@ -6,9 +6,7 @@
 
 <form method="POST" action="{{ route('login') }}">
     @csrf
-    <div></div>
-
-    <div class="mb-10 font-primary font-medium text-2xl text-neutral-600 card-header">{{ __('Entrar') }}</div>
+    <div class="mb-5 font-primary font-medium text-2xl text-neutral-600 card-header">{{ __('Entrar') }}</div>
 
     <!-- Email Address -->
     <div>
@@ -30,7 +28,6 @@
         <x-input-error :messages="$errors->get('password')" class="mt-2" />
     </div>
 
-
     <!-- Remember Me -->
     <div class="mt-5 flex flex-row justify-between">
             <label for="remember_me" class="inline-flex items-center">
@@ -45,13 +42,13 @@
             @endif
     </div>
 
-    <div class="mt-20 flex justify-center items-center">
+    <div class="mt-10 flex justify-center items-center">
         <x-primary-button>
             {{ __('Entrar') }}
         </x-primary-button>
     </div>
 
-    <div class="flex items-center justify-end mt-5 gap-2">
+    <div class="flex items-center justify-end mt-3 gap-2">
         @if (Route::has('register'))
         <span class="font-primary font-medium text-sm text-neutral-500">Não possui conta? </span>
         <a class="font-primary font-medium text-sm text-primary-700 hover:text-primary-700 hover:underline rounded-md" href="{{ route('register') }}">
@@ -61,18 +58,18 @@
     </div>
 </form>
 
-<div class="flex items-center justify-center space-x-4 mt-10">
-    <hr class="flex-grow text-neutral-200 ">
+<div class="flex items-center justify-center space-x-4 mt-5">
+    <hr class="flex-grow text-neutral-300 ">
     <span class="font-secondary text-neutral-400 text-base">ou</span>
     <hr class="flex-grow text-neutral-200">
 </div>
 
-<div class="mt-10 space-y-4">
+<div class="mt-5 space-y-4">
     <a href=" {{ route('redirect.google') }} ">
         <button class="w-full h-[45px] flex flex-row gap-4  items-center justify-center border border-primary-700 font-primary font-medium text-sm text-primary-1000 py-2 rounded-md shadow-md hover:border-primary-400 hover:border-1.5 focus:border-primary-700 focus:border-2 transition duration-200">
-
             <img src="https://cdn-icons-png.flaticon.com/256/2875/2875404.png" alt="Google logo" class="w-5 h-auto"> Continuar com o Google
         </button>
     </a>
 </div>
+
 @endsection

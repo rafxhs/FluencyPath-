@@ -1,10 +1,9 @@
 @extends('layouts.app')
 
-<!-- Importa o CSS -->
-<link rel="stylesheet" href="{{ asset('css/app.css') }}">
+<!-- CSS - sincronização de audio e detalhe das palavras -->
+<link rel="stylesheet" href="{{ asset('css/app.css') }}"><link/>
 
 @section('content')
-
 <section class="container">
     <div>
         <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
@@ -40,7 +39,6 @@
             <span>tags não correspondente</span>
             @endif
         </p>
-
         <!-- AUDIO -->
         <h4>Áudio</h4>
         <div id="waveform"></div>
@@ -73,7 +71,6 @@
                     </span>
                     @endforeach
                 </p>
-
     </div>
 
     <a href="{{ route('texts.index') }}" style="text-decoration: none; color: blue;">Voltar</a>
@@ -86,6 +83,5 @@
     <!-- Importa o script do card das palras -->
     <script src="{{ asset('/js/word-tooltip.js') }}"></script>
 
-
-    <div id="tooltip" class="hidden absolute bg-white p-3 shadow-md border rounded-md"></div>
-    @endsection
+<div id="tooltip" class="hidden absolute bg-white p-3 shadow-md border rounded-md"></div>
+@endsection
