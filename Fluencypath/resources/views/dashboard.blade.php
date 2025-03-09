@@ -143,7 +143,7 @@
             <article class="w-[340px] h-[260px] bg-primary-100 rounded-lg p-4 shadow-md">
 
                 <header class="flex items-center space-x-2 mt-2">
-                    <a href="{{ route('texts.show', $text->all()) }}" class="font-primary font-medium text-base text-primary-1000">
+                    <a href="{{ route('texts.show', $text->id) }}" class="font-primary font-medium text-base text-primary-1000">
                         {{ $text->title }}
                     </a>
 
