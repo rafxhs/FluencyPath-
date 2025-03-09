@@ -10,7 +10,7 @@ class TextController extends Controller
 {
     public function index()
     {
-        $texts = Text::with('audio')->get();
+        $texts = Text::with('audio')->orderBy('created_at', 'desc')->get();
         // $texts = Text::all();
         return view('texts.index', compact('texts'));
     }
