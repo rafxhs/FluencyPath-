@@ -53,13 +53,13 @@
         </div>
     </div>
 
-    <div class="flex items-center justify-end mt-10">
+    <div class="flex items-center justify-end mt-8">
         <x-primary-button>
             {{ __('Cadastre-se') }}
         </x-primary-button>
     </div>
 
-    <div class="flex items-center justify-end mt-5 gap-2">
+    <div class="flex items-center justify-end mt-3 gap-2">
         <span class="font-primary font-medium text-sm text-neutral-500">Já tem uma conta?</span>
         <a class="font-primary font-medium text-sm text-primary-700 hover:text-primary-700 hover:underline rounded-md" href="{{ route('login') }}">
             {{ __('Entrar') }}
@@ -69,16 +69,15 @@
 
 </form>
 
-<div class="flex items-center justify-center space-x-4 mt-8">
+<div class="flex items-center justify-center space-x-4 mt-5">
     <hr class="flex-grow text-neutral-200 ">
     <span class="font-secondary text-neutral-400 text-base">ou</span>
     <hr class="flex-grow text-neutral-200">
 </div>
 
-<div class="mt-8 space-y-4">
+<div class="mt-5 space-y-4">
     <a href=" {{ route('redirect.google') }} ">
         <button class="w-full h-[45px] flex flex-row gap-4 items-center justify-center border border-primary-700 font-primary font-medium text-sm text-primary-1000 py-2 rounded-md shadow-md hover:border-primary-400 hover:border-1.5 focus:border-primary-700 focus:border-2 transition duration-200">
-
             <img src="https://cdn-icons-png.flaticon.com/256/2875/2875404.png" alt="Google logo" class="w-5 h-auto">
             <span>Continuar com o Google</span>
         </button>

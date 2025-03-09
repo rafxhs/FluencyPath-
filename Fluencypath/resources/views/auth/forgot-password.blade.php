@@ -1,11 +1,11 @@
 <x-guest-layout>
     <div class="relative">
-        <div class="absolute -top-16 left-1/2 -translate-x-1/2  bg-primary-700 rounded-full w-32 h-32 flex justify-center items-center shadow-lg">
+        <div class="absolute top-50 bottom-0 left-1/2 -translate-x-1/2  bg-primary-700 rounded-full w-32 h-32 flex justify-center items-center shadow-lg">
         <x-heroicon-o-key class="w-16 h-16 text-primary-200"/>
         </div>
     </div>
 
-    <div class="mb-2 font-primary font-medium text-primary-700 text-2xl">
+    <div class="mb-2 mt-5 font-primary font-medium text-primary-700 text-2xl">
         {{ __('Redefina sua senha') }}
     </div>
 

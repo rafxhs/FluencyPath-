@@ -17,25 +17,28 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-primary-200">
-        <div class="flex flex-row sm-w[700px] sm-w[740px] xl:w-[1000px] xl:h-[700px] shadow-md bg-primary-100 xl:rounded-md">
-            <div class="xl:w-[530px] relative sm:rounded-l-md">
+
+    <div class="min-h-screen md:flex-row flex flex-col sm:justify-center items-center pt-10 sm:pt-0 bg-primary-200 ">
+
+        <div class="flex flex-row w-auto shadow-md bg-primary-900 xl:rounded-md mt-auto">
+
+            <div class="xl:w-[500px] xl:h-[600px] relative sm:rounded-l-md md:w-1/2">
                 <a href="{{ route('/') }}">
                     <img src="{{URL::asset('images/logo-cor-branca-primaria-horizontal.svg')}}" alt="Logo" class="h-8 absolute w-auto object-contain m-8">
                 </a>
-                <h1 class="flex items-center absolute justify-center font-primary font-medium text-center text-4xl text-neutral-100 m-20">Seja bem-vindo de volta!</h1>
-                <img src="{{URL::asset('images/login-bg.jpg')}}">
+                <h1 class="flex items-center absolute justify-center bottom-10 top-20 font-primary font-medium text-center text-4xl text-neutral-100 m-20">Seja bem-vindo de volta!</h1>
+                <img src="{{URL::asset('images/login-bg.jpg')}}" class="w-full h-full" >
             </div>
 
-            <div class="w-full sm:w-[470px] mt-6 pt-30 px-12 py-12 bg-primary-100 overflow-hidden sm:rounded-r-md">
+            <div class="w-full sm:w-[470px] xl:h-[600px] pt-30 px-12 py-12 bg-primary-100 overflow-hidden sm:rounded-r-md  md:w-1/2 ">
                 @yield('content')
             </div>
         </div>
-
-        <div class="mt-10 text-center text-sm text-neutral-500">
-            <p>&copy; {{ date('Y') }} FluencyPath. Todos os direitos reservados.</p>
-        </div>
     </div>
+    <div class="text-center text-sm text-neutral-500 p-10">
+            <p>&copy; {{ date('Y') }} FluencyPath. Todos os direitos reservados.</p>
+    </div>
+    
 </body>
 
 </html>

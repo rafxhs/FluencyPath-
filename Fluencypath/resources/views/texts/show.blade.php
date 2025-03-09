@@ -40,7 +40,6 @@
             <span>tags não correspondente</span>
             @endif
         </p>
-
         <!-- AUDIO -->
         <h4>Áudio</h4>
         <div id="waveform"></div>
@@ -73,7 +72,6 @@
                     </span>
                     @endforeach
                 </p>
-
     </div>
 
     <a href="{{ route('texts.index') }}" style="text-decoration: none; color: blue;">Voltar</a>
