@@ -83,7 +83,7 @@
             </button>
         </div>
 
-
+        @if(( Auth::user() && Auth::user()->is_admin == 'y') || (Auth::user() && Auth::user()->id == $text->idUser))
 
         <div>
             <form action="{{ route('texts.destroy', $text->id) }}" method="POST" style="display: inline;">
@@ -96,6 +96,7 @@
 
             <a href="{{ route('texts.edit', $text->id) }}" class="bg-yellow-300 text-white p-2 rounded hover:bg-yellow-600 ">Editar</a>
         </div>
+        @endif
         @endforeach
     </div>
 </section>
