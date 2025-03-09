@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('content')
-
 <!-- Importa o CSS -->
 <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+@section('content')
 
 <section class="container">
     <div>

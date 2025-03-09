@@ -10,10 +10,10 @@ document.addEventListener("DOMContentLoaded", function () {
     function initializeWavesurfer() {
         waveSurfer = WaveSurfer.create({
             container: "#waveform",
-            waveColor: "violet",
-            progressColor: "purple",
+            waveColor: "gray",
+            progressColor: "black",
             cursorColor: "red",
-            height: 80,
+            height: 3,
         });
 
          // Pega o caminho do áudio diretamente do botão Play
