@@ -7,12 +7,18 @@ document.addEventListener("DOMContentLoaded", function () {
     let sentences = document.querySelectorAll(".sentence");
     const playButton = document.getElementById("playButton");
 
+    function formatTime(seconds){
+        let minutes = Math.floor(seconds / 60);
+        let secs = Math.floor(seconds % 60);
+        return `${minutes.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
+    }
+
     function initializeWavesurfer() {
         waveSurfer = WaveSurfer.create({
             container: "#waveform",
             waveColor: "gray",
             progressColor: "black",
-            cursorColor: "red",
+            cursorColor: "black",
             height: 3,
         });
 
@@ -27,10 +33,17 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("Carregando áudio:", audioPath);
         waveSurfer.load(audioPath); 
 
+        waveSurfer.on("audioprocess", function () {
+            let currentTime = waveSurfer.getCurrentTime();
+            document.getElementById("audioTimer").innerText = formatTime(currentTime);
+            highlightCurrentSentence(currentTime);
+        });
+
         // Pega a duração (tempo) do audio
         waveSurfer.on("ready", function () {
             let totalDuration = waveSurfer.getDuration();
             calculateTimestamps(totalDuration);
+            document.getElementById("audioTimer").innerText = formatTime(0); 
         });
 
         // Adiciona as ondas com o waveSurfer
@@ -39,12 +52,14 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         waveSurfer.on("finish", function () {
-            playButton.innerText = "▶️ Play";
+            document.getElementById("audioTimer").innerText = formatTime(waveSurfer.getDuration());
+            playButton.innerText = "▶️";
         });
 
         initialized = true;
     }
 
+    initializeWavesurfer();
 
     playButton.addEventListener("click", function () {
         if (!initialized) {
@@ -53,10 +68,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (waveSurfer.isPlaying()) {
             waveSurfer.pause();
-            this.innerText = "▶️ Play";
+            this.innerText = "▶️";
         } else {
             waveSurfer.play();
-            this.innerText = "⏸️ Pause";
+            this.innerText = "⏸️";
         }
     });
 
