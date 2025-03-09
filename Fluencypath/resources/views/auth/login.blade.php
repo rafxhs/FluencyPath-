@@ -67,7 +67,6 @@
 <div class="mt-5 space-y-4">
     <a href=" {{ route('redirect.google') }} ">
         <button class="w-full h-[45px] flex flex-row gap-4  items-center justify-center border border-primary-700 font-primary font-medium text-sm text-primary-1000 py-2 rounded-md shadow-md hover:border-primary-400 hover:border-1.5 focus:border-primary-700 focus:border-2 transition duration-200">
-
             <img src="https://cdn-icons-png.flaticon.com/256/2875/2875404.png" alt="Google logo" class="w-5 h-auto"> Continuar com o Google
         </button>
     </a>

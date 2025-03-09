@@ -35,7 +35,7 @@
             </div>
         </div>
     </div>
-    <div class=" text-center text-sm text-neutral-500 p-10">
+    <div class="text-center text-sm text-neutral-500 p-10">
             <p>&copy; {{ date('Y') }} FluencyPath. Todos os direitos reservados.</p>
     </div>
     
