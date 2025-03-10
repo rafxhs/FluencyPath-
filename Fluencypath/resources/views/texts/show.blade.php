@@ -45,14 +45,16 @@
                         </x-slot>
 
                         <x-slot name="content">
-                            <x-dropdown-link :href="route('texts.edit', $texts->id)" class="inline-flex items-center justify-center font-primary font-medium text-base text-neutral-500 gap-2"><x-heroicon-o-pencil-square class="w-5 h-5 text-neutral-500" /> Editar</x-dropdown-link>
+                            <x-dropdown-link :href="route('texts.edit', $texts->id)" class="inline-flex items-center justify-center font-primary font-medium  text-neutral-500 gap-2"><x-heroicon-o-pencil-square class="w-5 h-5 text-neutral-500" /> Editar</x-dropdown-link>
                             <form action="{{ route('texts.destroy', $texts->id) }}" method="POST" onclick="return confirm('Deseja excluir este texto?')" style="display: inline;">
                                 @csrf
                                 @method('DELETE')
-                                <x-dropdown-link as="button" class="inline-flex items-center justify-center font-primary font-medium text-base text-neutral-500 gap-2"><x-heroicon-o-trash class="w-5 h-5 text-neutral-500" /> Excluir</x-dropdown-link>
+                                <button type="submit" class="flex w-full items-center justify-center px-4 py-2 font-primary font-medium text-start text-sm leading-5 text-neutral-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out gap-2 ">
+                                    <x-heroicon-o-trash class="w-5 h-5 text-neutral-500" /> Excluir
+                                </button>
                             </form>
                         </x-slot>
-                        </x-dropdown-texts>
+                    </x-dropdown-actions>
                 </div>
             </header>
 
@@ -119,9 +121,6 @@
     <script src="{{ asset('/js/audio-sync.js') }}"></script>
     <!-- Importa o script do card das palras -->
     <script src="{{ asset('/js/word-tooltip.js') }}"></script>
-    <!-- Importa o script do card das palras -->
-    <script src="{{ asset('/js/btn-favorite-tooltip.js') }}"></script>
-
 
     <div id="tooltip" class="hidden absolute bg-white p-3 shadow-md border rounded-md"></div>
     @endsection
