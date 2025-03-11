@@ -18,11 +18,10 @@
 
 <body class="font-sans antialiased">
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-primary-200">
-        <div class="w-full sm:w-[650px] sm:h-[750px] mt-6 pt-30 px-20 py-12 bg-primary-100 shadow-md overflow-hidden sm:rounded-md">
+        <div class="w-full sm:w-[550px] sm:h-[700px] mt-6 pt-30 px-20 py-12 bg-primary-100 shadow-xl  overflow-hidden sm:rounded-md">
             @yield('content')
         </div>
-
-        <div class="mt-10 text-center text-sm text-neutral-600">
+        <div class="text-center text-sm text-neutral-600 p-10">
             <p>&copy; {{ date('Y') }} FluencyPath. Todos os direitos reservados.</p>
         </div>
     </div>
