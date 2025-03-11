@@ -18,6 +18,17 @@
         </ol>
     </div>
 
+@if ($errors->any())
+    <div class="bg-red-500 text-white p-3 rounded-lg">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
+
     <div class="flex py-10">
         <div class=" w-[1240px] h-[900px]">
             <div class="bg-white overflow-hidden shadow-md sm:rounded-lg py-6 px-14">
@@ -33,7 +44,7 @@
                             <x-heroicon-s-microphone class="w-6 h-6 text-primary-100" />
                             <span>Adicionar áudio</span>
                         </label>
-                        <input id="audio-upload" type="file" name="audio" accept="audio/*" required class="hidden">
+                        <input id="audio-upload" type="file" name="audio" accept="audio/*" class="hidden">
                     </div>
                     <label for="title" class="text-sm font-semibold">Título</label>
                     <input
@@ -80,4 +91,5 @@
     </script>
 
     </div>
+
     @endsection
