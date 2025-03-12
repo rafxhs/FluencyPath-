@@ -10,6 +10,8 @@ class TextController extends Controller
 {
     public function index(Request $request)
     {
+        $texts = Text::with('audio')->orderBy('created_at', 'desc')->get();
+        // $texts = Text::all();
         $searchbar = $request->input('searchbar');
 
         $query = Text::with('audio');
@@ -28,11 +30,6 @@ class TextController extends Controller
         return view('texts.index', compact('texts'));
     }
 
-    public function create()
-    {
-        return view('texts.create');
-    }
-
     public function store(Request $request)
     {
         $request->validate([
@@ -40,7 +37,15 @@ class TextController extends Controller
             'content' => 'required|string',
             'tag' => 'required|string|max:255',
             'audio' => 'required|file|mimes:mp3,wav,ogg|max:409600',
+        ], [
+            'audio.required' => 'É necessário anexar um áudio antes de adicionar o texto.',
+            'audio.mimes' => 'O arquivo de áudio deve estar no formato MP3, WAV ou OGG.',
+            'audio.max' => 'O tamanho máximo permitido para o áudio é de 400MB.',
         ]);
+
+        if (!$request->hasFile('audio')) {
+            return redirect()->route('texts.create')->withErrors(['audio' => 'É necessário anexar um áudio antes de adicionar o texto.']);
+        }
 
         $text = Text::create([
             'title' => $request->input('title'),
@@ -49,9 +54,8 @@ class TextController extends Controller
             'idUser' => auth()->id(),
         ]);
 
-
         $audioFile = $request->file('audio');
-        $filePath = $audioFile->store('audio', 'public'); // Salva em `storage/app/public/audio`
+        $filePath = $audioFile->store('audio', 'public');
 
         Audio::create([
             'idText' => $text->id,
@@ -60,6 +64,11 @@ class TextController extends Controller
         ]);
 
         return redirect()->route('texts.index')->with('success', 'Texto e áudio adicionados com sucesso!');
+    }
+
+    public function create()
+    {
+        return view('texts.create');
     }
 
     public function edit($id)

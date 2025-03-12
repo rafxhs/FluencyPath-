@@ -37,7 +37,6 @@
                     @endif
                 </button>
             </div>
-<<<<<<< HEAD
             <div class="flex flex-row mt-2">
                 <img src="{{ Auth::user()->profilePicture ? asset('storage/' . Auth::user()->profilePicture->path) : asset('images/default-profile.png') }}"
                     alt="Foto de Perfil Atual"
@@ -46,7 +45,6 @@
                     <p class="font-primary font-medium text-2xl text-neutral-600">{{ $user->name }}</p>
                     <p class="font-primary font-base text-xl text-neutral-600">{{ $user->email }}</p>
                 </div>
-=======
             <div class="flex flex-row  items-center">
             <div class="mt-10">
                 <img src="{{ Auth::user()->profilePicture ? asset('storage/' . Auth::user()->profilePicture->path) : asset('images/default-profile.png') }}"
@@ -56,7 +54,6 @@
             <div class="mt-10 ml-5 aling-itens">
                 <p class="font-primary font-medium text-2xl text-neutral-600">{{ $user->name }}</p>
                 <p class="font-primary font-base text-xl text-neutral-600">{{ $user->email }}</p>
->>>>>>> detalhes-front
             </div>
             </div>
 

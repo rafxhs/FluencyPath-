@@ -38,6 +38,10 @@
                         <a href="{{ route('texts.create') }}" class="font-primary text-primary-300">Adicionar texto</a>
                     </x-tertiary-button>
 
+
+                    @if(( Auth::user() && Auth::user()->is_admin == 'y') || (Auth::user() && Auth::user()->id == $texts->idUser))
+
+
                     <x-dropdown-actions align="left">
                         <x-slot name="trigger">
                             <button class="h-[40px] flex items-center justify-center bg-primary-700 font-primary font-500 border border-transparent rounded-md text-primary-300  text-center text-sm tracking-widest hover:bg-primary-400 focus:bg-primary-400 active:bg-primary-900 focus:outline-none transition ease-in-out duration-150 shadow-lg  px-2 py-2">
@@ -56,6 +60,7 @@
                             </form>
                         </x-slot>
                         </x-dropdown-texts>
+                        @endif
                 </div>
             </header>
 

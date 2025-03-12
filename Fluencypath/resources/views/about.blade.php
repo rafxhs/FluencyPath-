@@ -22,18 +22,20 @@
         <div class="flex justify-center">
             <span class="font-primary font-bold text-primary-1000 text-4xl">Desenvolvedores</span>
         </div>
-        <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 pt-28">
-            <div class=" flex flex-col w-[380px] h-[500px]">
+
+        <div class="w-full grid sm:grid-cols-2 lg:grid-cols-3 pt-28">
+
+            <div class=" flex flex-col w-full max-w-[380px] h-[600px]">
                 <div class="w-full h-[300px]  flex items-center justify-center overflow-hidden rounded-lg shadow-md">
                     <img src="{{ URL::asset('images/developer1.jpg') }}"
                         alt="Foto do Desenvolvedor"
                         class="w-full h-full object-cover">
                 </div>
 
-                <div class="w-full text-left mt-4">
+                <div class="w-full  h-[180px] text-left mt-4">
                     <span class="font-primary font-medium text-neutral-600 text-2xl">Erick Silva</span>
                     <p class="font-secondary text-primary-400 text-lg">Desenvolvedor Backend</p>
-                    <p class="w-full font-secondary text-neutral-400 text-base text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed luctus lectus ligula, dictum semper mi egestas ut.</p>
+                    <p class="w-full mt-1 font-secondary text-neutral-400 text-base text-justify">Na área de TI desde 2022, Cursando o 3 Período de Tecnologia em Sistema Para Internet (TSI) pelo IFPE - Igarassu. Área de Interesse: Dados.</p>
                 </div>
 
                 <div class="flex gap-4">
@@ -42,7 +44,7 @@
                             <path fill="currentColor" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2" />
                         </svg>
                     </a>
-                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to= ess56@discente.ifpe.edu.br" rel="noopener noreferrer" target="_blank">
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ess56@discente.ifpe.edu.br" rel="noopener noreferrer" target="_blank">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" class="text-neutral-400">
                             <path fill="currentColor" d="M32 6v20c0 1.135-.865 2-2 2h-2V9.849l-12 8.62l-12-8.62V28H2c-1.135 0-2-.865-2-2V6c0-.568.214-1.068.573-1.422A1.97 1.97 0 0 1 2 4h.667L16 13.667L29.333 4H30c.568 0 1.068.214 1.427.578c.359.354.573.854.573 1.422" />
                         </svg>
@@ -55,17 +57,17 @@
                 </div>
             </div>
 
-            <div class=" flex flex-col w-[380px] h-[500px]">
+            <div class=" flex flex-col w-full max-w-[380px] h-[600px]">
                 <div class="w-full h-[300px]  flex items-center justify-center overflow-hidden rounded-lg shadow-md">
                     <img src="{{ URL::asset('images/developer2.jpg') }}"
                         alt="Foto do Desenvolvedor"
                         class="w-full h-full object-cover">
                 </div>
 
-                <div class="w-full text-left mt-4">
+                <div class="w-full text-left h-[180px] mt-4 ">
                     <span class="font-primary font-medium text-neutral-600 text-2xl">Hanna Sabrynna</span>
                     <p class="font-secondary text-primary-400 text-lg">Desenvolvedora Full Stack</p>
-                    <p class="w-full font-secondary text-neutral-400 text-base text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed luctus lectus ligula, dictum semper mi egestas ut.</p>
+                    <p class="w-full mt-1 font-secondary text-neutral-400 text-base text-justify">Técnica em informatica para internet pelo IFPE - Igarassu, cursando o 3 período em TSI. Área de interesse: Desenvolvimento backend.</p>
                 </div>
 
                 <div class="flex gap-4">
@@ -87,20 +89,20 @@
                 </div>
             </div>
 
-            <div class=" flex flex-col w-[380px] h-[500px]">
+            <div class="flex flex-col w-full max-w-[380px] h-[600px]">
                 <div class="w-full h-[300px]  flex items-center justify-center overflow-hidden rounded-lg shadow-md">
-                    <img src="{{ URL::asset('images/developer3.jpg') }}" alt="Foto do Desenvolvedor"
+                    <img src="{{ URL::asset('images/developer3.jpg') }}"
                         alt="Foto do Desenvolvedor"
                         class="w-full h-full object-cover">
                 </div>
 
-                <div class="w-full text-left mt-4">
+                <div class="w-full h-[180px] text-left mt-4">
                     <span class="font-primary font-medium text-neutral-600 text-2xl">Rafaela Neves</span>
                     <p class="font-secondary text-primary-400 text-lg">UI/UX Designer e Desenvolvedora Frontend</p>
-                    <p class="w-full font-secondary text-neutral-400 text-base text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed luctus lectus ligula, dictum semper mi egestas ut.</p>
+                    <p class="w-full mt-1 font-secondary text-neutral-400 text-base text-justify">Ingressou na área de TI em 2023 no Curso de Sistemas para Internet no IFPE-Igarassu, atualmente no 3 período. Áreas de interesse: Design UX/UI e Frontend.</p>
                 </div>
 
-                <div class="flex gap-4">
+                <div class="flex gap-4 ">
                     <a href="https://github.com/rafxhs" target="_blank">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="text-neutral-400">
                             <path fill="currentColor" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2" />
@@ -120,5 +122,6 @@
             </div>
         </div>
     </section>
+
 </main>
 @endsection
