@@ -41,7 +41,6 @@
 
                     @if(( Auth::user() && Auth::user()->is_admin == 'y') || (Auth::user() && Auth::user()->id == $texts->idUser))
 
-
                     <x-dropdown-actions align="left">
                         <x-slot name="trigger">
                             <button class="h-[40px] flex items-center justify-center bg-primary-700 font-primary font-500 border border-transparent rounded-md text-primary-300  text-center text-sm tracking-widest hover:bg-primary-400 focus:bg-primary-400 active:bg-primary-900 focus:outline-none transition ease-in-out duration-150 shadow-lg  px-2 py-2">
@@ -50,7 +49,7 @@
                         </x-slot>
 
                         <x-slot name="content">
-                            <x-dropdown-link :href="route('texts.edit', $texts->id)" class="inline-flex items-center justify-center font-primary font-medium text-base text-neutral-500 gap-2"><x-heroicon-o-pencil-square class="w-5 h-5 text-neutral-500" /> Editar</x-dropdown-link>
+                            <x-dropdown-link :href="route('texts.edit', $texts->id)" class="inline-flex items-center justify-center font-primary font-medium  text-neutral-500 gap-2"><x-heroicon-o-pencil-square class="w-5 h-5 text-neutral-500" /> Editar</x-dropdown-link>
                             <form action="{{ route('texts.destroy', $texts->id) }}" method="POST" onclick="return confirm('Deseja excluir este texto?')" style="display: inline;">
                                 @csrf
                                 @method('DELETE')
@@ -59,8 +58,8 @@
                                 </button>
                             </form>
                         </x-slot>
-                        </x-dropdown-texts>
-                        @endif
+                    </x-dropdown-actions>
+                    @endif
                 </div>
             </header>
 
