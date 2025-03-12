@@ -20,7 +20,7 @@
             @if ($favoriteTexts->isEmpty())
             <div class="flex flex-col items-center justify-center w-full text-center p-8">
                 <h1 class="font-medium text-lg text-neutral-500 py-2">Nenhum texto favoritado</h1>
-                <p class="text-justify text-sm text-neutral-500 py-2">Marque com estrelas os textos que você deseja acessar facilmente depois.</p>
+                <p class="text-justify text-sm text-neutral-500 py-2">Marque com coração os textos que você deseja acessar facilmente depois.</p>
             </div>
             @else
             @foreach ($favoriteTexts as $text)

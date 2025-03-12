@@ -29,9 +29,19 @@
                 <h3 class="font-primary font-medium text-2xl text-neutral-600">{{ $texts->title }}</h3>
 
                 <div class="inline-flex items-end justify-end gap-2">
-                    <button class="h-[40px] flex items-center justify-center bg-primary-100 font-primary font-500 border border-neutral-100 rounded-md text-primary-300  text-center text-sm tracking-wides shadow-lg  px-2 py-2">
-                        <x-heroicon-o-star class="w-6 h-6 text-neutral-300 hover:text-secondary-600 focus:text-secondary-600 active:text-secondary-600 focus:outline-none transition ease-in-out duration-150" />
-                    </button>
+                    <div class="w-[60px] h-[30px] flex items-center justify-center bg-primary-200 border border-neutral-100 rounded">
+                        <button
+                            class="favorite-btn flex items-center space-x-2"
+                            data-text-id="{{ $texts->id }}"
+                            data-favorited="{{ Auth::user()->favorites()->where('text_id', $texts->id)->exists() ? 'true' : 'false' }}">
+                            <span class="favorite-icon text-xl">
+                                {{ Auth::user()->favorites()->where('text_id', $texts->id)->exists() ? '❤️' : '🤍' }}
+                            </span>
+                            <span class="favorites-count text-gray-600 text-lg">
+                                {{ $texts->favorites_count }}
+                            </span>
+                        </button>
+                    </div>
 
                     <x-tertiary-button>
                         <x-heroicon-s-plus class="w-6 h-6 text-primary-300" />
