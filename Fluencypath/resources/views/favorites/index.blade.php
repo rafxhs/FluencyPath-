@@ -54,7 +54,7 @@
         </div>
         @else
 
-        <section class="grid grid-cols-3 grid-rows-4 gap-4 my-10">
+        <section class="grid grid-cols-1 grid-rows-12 sm:grid-cols-2 sm:grid-rows-6 lg:grid-cols-3 lg:grid-rows-4 gap-4 my-10">
             @foreach ($favoriteTexts as $text)
             <article class="w-full max-w-[340px] h-[260px] relative bg-primary-100 rounded-lg p-4 shadow-md my-4">
                 <header class="flex items-center justify-between my-2">
@@ -62,17 +62,14 @@
                         {{ $text->title }}
                     </a>
 
-                    <div class="w-[60px] h-[30px] flex items-center justify-center bg-primary-200 rounded border-2 border-neutral-100">
-                        <!-- Botão de Favoritar -->
+                    <div class="w-[60px] h-[30px] flex items-center justify-center bg-primary-200 border border-neutral-100 rounded">
                         <button
                             class="favorite-btn flex items-center space-x-2"
                             data-text-id="{{ $text->id }}"
                             data-favorited="{{ Auth::user()->favorites()->where('text_id', $text->id)->exists() ? 'true' : 'false' }}">
-                            <!-- Ícone do coração -->
                             <span class="favorite-icon text-xl">
                                 {{ Auth::user()->favorites()->where('text_id', $text->id)->exists() ? '❤️' : '🤍' }}
                             </span>
-                            <!-- Contador de favoritos -->
                             <span class="favorites-count text-gray-600 text-lg">
                                 {{ $text->favorites_count }}
                             </span>
@@ -96,7 +93,7 @@
                     </li>
                     @endforeach
                     @else
-                    <li>tags não correspondente (MUDAR ISSO pra quando não tiver na lista, nem guradar no banco)</li>
+                    <li>Tags não correspondente!</li>
                     @endif
                 </ul>
                 <p class="mt-2 text-sm text-gray-700 text-justify">{{ Str::limit($text->content, 160, '...') }}</p> <!--Limita até 25 caracteres do texto -->
@@ -111,32 +108,8 @@
         </section>
 
         <section class="">
-            <div class="row flex justify-center border-t border-neutral-200">
-                <button class="rounded-md rounded-r-none border border-r-0 border-neutral-200 py-2 px-3 text-center text-sm transition-all shadow-sm hover:shadow-lg text-slate-600 hover:text-white hover:bg-slate-800 hover:border-slate-800 focus:text-white focus:bg-slate-800 focus:border-slate-800 active:border-slate-800 active:text-white active:bg-slate-800 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
-                        <path fill-rule="evenodd" d="M11.03 3.97a.75.75 0 0 1 0 1.06l-6.22 6.22H21a.75.75 0 0 1 0 1.5H4.81l6.22 6.22a.75.75 0 1 1-1.06 1.06l-7.5-7.5a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd" />
-                    </svg>
-                </button>
-                <button class="rounded-md rounded-r-none rounded-l-none border border-r-0 border-neutral-200 py-2 px-3 text-center text-sm transition-all shadow-sm hover:shadow-lg text-slate-600 hover:text-white hover:bg-slate-800 hover:border-slate-800 focus:text-white focus:bg-slate-800 focus:border-slate-800 active:border-slate-800 active:text-white active:bg-slate-800 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">
-                    1
-                </button>
-                <button class="rounded-md rounded-r-none rounded-l-none border border-r-0 border-neutral-200 py-2 px-3 text-center text-sm transition-all shadow-sm hover:shadow-lg text-slate-600 hover:text-white hover:bg-slate-800 hover:border-slate-800 focus:text-white focus:bg-slate-800 focus:border-slate-800 active:border-slate-800 active:text-white active:bg-slate-800 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">
-                    2
-                </button>
-                <button class="rounded-md rounded-r-none rounded-l-none border border-r-0 border-neutral-200 py-2 px-3 text-center text-sm transition-all shadow-sm hover:shadow-lg text-slate-600 hover:text-white hover:bg-slate-800 hover:border-slate-800 focus:text-white focus:bg-slate-800 focus:border-slate-800 active:border-slate-800 active:text-white active:bg-slate-800 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">
-                    3
-                </button>
-                <button class="rounded-md rounded-r-none rounded-l-none border border-r-0 border-neutral-200 py-2 px-3 text-center text-sm transition-all shadow-sm hover:shadow-lg text-slate-600 hover:text-white hover:bg-slate-800 hover:border-slate-800 focus:text-white focus:bg-slate-800 focus:border-slate-800 active:border-slate-800 active:text-white active:bg-slate-800 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">
-                    4
-                </button>
-                <button class="rounded-md rounded-r-none rounded-l-none border border-r-0 border-neutral-200 py-2 px-3 text-center text-sm transition-all shadow-sm hover:shadow-lg text-slate-600 hover:text-white hover:bg-slate-800 hover:border-slate-800 focus:text-white focus:bg-slate-800 focus:border-slate-800 active:border-slate-800 active:text-white active:bg-slate-800 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">
-                    5
-                </button>
-                <button class="rounded-md rounded-l-none border border-neutral-200 py-2 px-3 text-center text-sm transition-all shadow-sm hover:shadow-lg text-slate-600 hover:text-white hover:bg-slate-800 hover:border-slate-800 focus:text-white focus:bg-slate-800 focus:border-slate-800 active:border-slate-800 active:text-white active:bg-slate-800 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
-                        <path fill-rule="evenodd" d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
-                    </svg>
-                </button>
+            <div class="pagination flex space-x-2">
+               <!--paginação de favoritos aqui -->
             </div>
         </section>
     </section>

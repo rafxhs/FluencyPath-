@@ -39,7 +39,7 @@
         </div>
     </header>
 
-    <section class="grid grid-cols-3 grid-rows-4 gap-4 my-10">
+    <section class="grid grid-cols-1 grid-rows-12 sm:grid-cols-2 sm:grid-rows-6 lg:grid-cols-3 lg:grid-rows-4 gap-4 my-10">
         @php
         $user = Auth::user();
         $favoriteTexts = $user->favorites()->with('favorites')->get();
@@ -51,17 +51,14 @@
                     {{ $text->title }}
                 </a>
 
-                <div class="w-[60px] h-[30px] flex items-center justify-center bg-primary-200 rounded border-2 border-neutral-100">
-                    <!-- Botão de Favoritar -->
+                <div class="w-[60px] h-[30px] flex items-center justify-center bg-primary-200 border border-neutral-100 rounded">
                     <button
                         class="favorite-btn flex items-center space-x-2"
                         data-text-id="{{ $text->id }}"
                         data-favorited="{{ Auth::user()->favorites()->where('text_id', $text->id)->exists() ? 'true' : 'false' }}">
-                        <!-- Ícone do coração -->
                         <span class="favorite-icon text-xl">
                             {{ Auth::user()->favorites()->where('text_id', $text->id)->exists() ? '❤️' : '🤍' }}
                         </span>
-                        <!-- Contador de favoritos -->
                         <span class="favorites-count text-gray-600 text-lg">
                             {{ $text->favorites_count }}
                         </span>
@@ -71,7 +68,7 @@
 
             <div class="grid grid-cols-2">
                 <p class="text-sm text-gray-500 truncate">{{ $text->user->name }}</p>
-                <p class="text-sm text-gray-500">- {{ $text->created_at->format('d/m/Y') }}</p>
+                <p class="text-sm text-gray-500">- {{ $text->created_at->translatedFormat('M, j \d\e Y') }}</p>
             </div>
 
             <ul>
@@ -85,7 +82,7 @@
                 </li>
                 @endforeach
                 @else
-                <li>tags não correspondente (MUDAR ISSO pra quando não tiver na lista, nem guradar no banco)</li>
+                <li>Tags não correspondente!</li>
                 @endif
             </ul>
             <p class="mt-2 text-sm text-gray-700 text-justify">{{ Str::limit($text->content, 160, '...') }}</p> <!--Limita até 25 caracteres do texto -->
@@ -98,35 +95,12 @@
         @endforeach
     </section>
 
-    <section class="">
-
-        <div class="row flex justify-center border-t border-neutral-200">
-
-            <!-- Paginação que o laravel gera pronto automaticamente -->
-            <div class="mt-4 flex justify-center">
-                <div class="pagination flex space-x-2">
-                    {{ $texts->links() }}
-                </div>
+    <section class="p-10">
+        <!-- Paginação que o laravel gera pronto automaticamente -->
+        <div class="mt-4 flex justify-center">
+            <div class="d-flex justify-content-center">
+                {{ $texts->links('') }}
             </div>
-            <!-- Estilo da paginação que deve ser usada -->
-            <button class="rounded-md rounded-r-none border border-r-0 border-neutral-200 py-2 px-3 text-center text-sm transition-all shadow-sm hover:shadow-lg text-neutral-500 hover:text-neutral-500 hover:bg-neutral-200 hover:border-neutral-200 focus:text-white focus:bg-neutral-300 focus:border-neutral-300 active:border-neutral-300 active:text-white active:bg-neutral-300 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">
-                <x-heroicon-s-arrow-left class="w-5 h-5 text-neutral-500" />
-            </button>
-            <button class="rounded-md rounded-r-none rounded-l-none border border-r-0 border-neutral-200 py-2 px-3 text-center text-sm transition-all shadow-sm hover:shadow-lg text-neutral-500 hover:text-neutral-500  hover:bg-neutral-200 hover:border-neutral-200 focus:text-white focus:bg-neutral-300 focus:border-neutral-300 active:border-neutral-300 active:text-white active:bg-neutral-300disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">
-                1
-            </button>
-            <button class="rounded-md rounded-r-none rounded-l-none border border-r-0 border-neutral-200 py-2 px-3 text-center text-sm transition-all shadow-sm hover:shadow-lg text-neutral-500 hover:text-neutral-500 hover:bg-neutral-200 hover:border-neutral-200 focus:text-white focus:bg-neutral-300 focus:border-neutral-300 active:border-neutral-300 active:text-white active:bg-neutral-300 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">
-                2
-            </button>
-            <button class="rounded-md rounded-r-none rounded-l-none border border-r-0 border-neutral-200 py-2 px-3 text-center text-sm transition-all shadow-sm hover:shadow-lg text-neutral-500 hover:text-neutral-500  hover:bg-neutral-200 hover:border-neutral-200 focus:text-white focus:bg-neutral-300 focus:border-neutral-300 active:border-neutral-300 active:text-white active:bg-neutral-300 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">
-                3
-            </button>
-            <button class="rounded-md rounded-r-none rounded-l-none border border-r-0 border-neutral-200 py-2 px-3 text-center text-sm transition-all shadow-sm hover:shadow-lg text-neutral-500 hover:text-neutral-500  hover:bg-neutral-200 hover:border-neutral-200 focus:text-white focus:bg-neutral-300 focus:border-neutral-300 active:border-neutral-300 active:text-white active:bg-neutral-300 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">
-                4
-            </button>
-            <button class="rounded-md rounded-l-none border border-neutral-200 py-2 px-3 text-center text-sm transition-all shadow-sm hover:shadow-lg text-neutral-500 hover:text-neutral-500 hover:bg-neutral-200  hover:border-neutral-200 focus:text-white focus:bg-neutral-300 focus:border-neutral-300 active:border-neutral-300 active:text-white active:bg-neutral-300 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">
-                <x-heroicon-s-arrow-right class="w-5 h-5 text-neutral-500" />
-            </button>
         </div>
     </section>
 </section>
