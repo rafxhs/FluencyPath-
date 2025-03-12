@@ -35,7 +35,7 @@
                 <div class="w-full  h-[180px] text-left mt-4">
                     <span class="font-primary font-medium text-neutral-600 text-2xl">Erick Silva</span>
                     <p class="font-secondary text-primary-400 text-lg">Desenvolvedor Backend</p>
-                    <p class="w-full mt-1 font-secondary text-neutral-400 text-base text-justify">Na área de TI desde 2022, Cursando o 3 Peíodo de Tecnologia em Sistema Para Internet (TSI) pelo IFPE - Igarassu. Área de Interesse: Dados.</p>
+                    <p class="w-full mt-1 font-secondary text-neutral-400 text-base text-justify">Na área de TI desde 2022, Cursando o 3 Período de Tecnologia em Sistema Para Internet (TSI) pelo IFPE - Igarassu. Área de Interesse: Dados.</p>
                 </div>
 
                 <div class="flex gap-4">
@@ -69,7 +69,7 @@
                     <p class="font-secondary text-primary-400 text-lg">Desenvolvedora Full Stack</p>
                     <p class="w-full mt-1 font-secondary text-neutral-400 text-base text-justify">Técnica em informatica para internet pelo IFPE - Igarassu, cursando o 3 período em TSI. Área de interesse: Desenvolvimento backend.</p>
                 </div>
-               
+
                 <div class="flex gap-4">
                     <a href="https://github.com/hannasabrynna" target="_blank">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="text-neutral-400">

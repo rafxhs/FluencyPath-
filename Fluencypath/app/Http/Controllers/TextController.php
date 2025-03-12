@@ -8,10 +8,25 @@ use Illuminate\Support\Facades\Storage;
 
 class TextController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $texts = Text::with('audio')->orderBy('created_at', 'desc')->get();
         // $texts = Text::all();
+        $searchbar = $request->input('searchbar');
+
+        $query = Text::with('audio');
+
+        if ($request->has('searchbar')) {
+            $query->where(function ($q) use($searchbar){
+                $q->where('title', 'like', "%{$searchbar}%")
+                      ->orWhere('content', 'like', "%{$searchbar}%")
+                      ->orWhere('tag', 'like', "%{$searchbar}%");
+            });
+        }
+
+        $texts = $query->get();
+
+        $texts = $query->paginate(12);
         return view('texts.index', compact('texts'));
     }
 

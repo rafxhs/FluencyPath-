@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="container max-w-7xl mx-auto px-4 sm:px-10 lg:px-10">
-    <div class="w-full">
+    <nav class="w-full">
         <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse pt-10">
             <li>
                 <div class="flex items-center">
@@ -16,7 +16,7 @@
                 </div>
             </li>
         </ol>
-    </div>
+    </nav>
 
 @if ($errors->any())
     <div class="bg-red-500 text-white p-3 rounded-lg">
@@ -31,7 +31,7 @@
 
     <div class="flex py-10">
         <div class=" w-[1240px] h-[900px]">
-            <div class="bg-white overflow-hidden shadow-md sm:rounded-lg py-6 px-14">
+            <div class="bg-white overflow-hidden shadow-md sm:rounded-lg py-6 px-20">
                 <form
                     action="{{ route('texts.store') }}"
                     method="POST"
@@ -40,8 +40,8 @@
                     @csrf
                     <div class="w-full inline-flex justify-between items-center">
                         <h1 class="my-4 font-primary font-medium text-2xl text-neutral-600">Adicionar Texto</h1>
-                        <label for="audio-upload" class="w-[200px] h-[50px] gap-1 inline-flex items-center justify-center px-4 py-2 bg-primary-700 font-primary font-500 border border-transparent rounded-lg text-primary-300  text-center text-base tracking-widest hover:bg-primary-400 focus:bg-primary-400 active:bg-primary-900 focus:outline-none transition ease-in-out cursor-pointer duration-150">
-                            <x-heroicon-s-microphone class="w-6 h-6 text-primary-100" />
+                        <label for="audio-upload" class="w-[170px] h-[45px] gap-1 inline-flex items-center justify-center px-2 py-2 bg-primary-700 font-primary font-500 border border-transparent rounded-lg text-primary-300  text-center text-sm tracking-widest hover:bg-primary-400 focus:bg-primary-400 active:bg-primary-900 focus:outline-none transition ease-in-out cursor-pointer duration-150">
+                            <x-heroicon-o-microphone class="w-5 h-5 text-primary-100" />
                             <span>Adicionar áudio</span>
                         </label>
                         <input id="audio-upload" type="file" name="audio" accept="audio/*" class="hidden">
@@ -58,7 +58,7 @@
                         id="tags-input"
                         name="tag"
                         required
-                        class="border border-neutral-300 p-2 rounded-lg">
+                        class="border border-neutral-300 p-2 rounded-lg focus:ring-neutral-300 focus:ring-opacity-100 focus:ring-1 focus:outline-none">
 
                     <label for="content" class="text-sm font-semibold">Texto</label>
                     <textarea
@@ -66,7 +66,7 @@
                         required
                         class="h-[400px] border border-neutral-300 p-2 rounded-lg"></textarea>
 
-                    <div class="mt-20 flex justify-center items-center">
+                    <div class="mt-20 flex justify-end items-end">
                         <button class="sm:w-[150px] sm:h-[40px] inline-flex items-center justify-center px-4 py-2 bg-primary-700 font-primary font-500 border border-transparent rounded-lg text-primary-300  text-center text-base tracking-widest hover:bg-primary-400 focus:bg-primary-400 active:bg-primary-900 focus:outline-none transition ease-in-out duration-150">
                             {{ __('Adicionar') }}
                         </button>
@@ -74,7 +74,7 @@
                 </form>
             </div>
         </div>
-    </div>
+    </section>
 
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css">
