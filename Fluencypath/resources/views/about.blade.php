@@ -25,7 +25,7 @@
 
         <div class="w-full grid sm:grid-cols-2 lg:grid-cols-3 pt-28">
 
-            <div class=" flex flex-col w-full max-w-[380px] h-[600px]">
+            <div class=" flex flex-col w-full max-w-[380px] min-h-[500px] py-4">
                 <div class="w-full h-[300px]  flex items-center justify-center overflow-hidden rounded-lg shadow-md">
                     <img src="{{ URL::asset('images/developer1.jpg') }}"
                         alt="Foto do Desenvolvedor"
@@ -35,7 +35,7 @@
                 <div class="w-full  h-[180px] text-left mt-4">
                     <span class="font-primary font-medium text-neutral-600 text-2xl">Erick Silva</span>
                     <p class="font-secondary text-primary-400 text-lg">Desenvolvedor Backend</p>
-                    <p class="w-full mt-1 font-secondary text-neutral-400 text-base text-justify">Na área de TI desde 2022, Cursando o 3 Período de Tecnologia em Sistema Para Internet (TSI) pelo IFPE - Igarassu. Área de Interesse: Dados.</p>
+                    <p class="w-full mt-1 font-secondary text-neutral-400 text-base text-justify">Na área de TI desde 2022, Cursando o 3 período de Tecnologia em Sistema Para Internet (TSI) pelo IFPE - Igarassu. Área de Interesse: Dados.</p>
                 </div>
 
                 <div class="flex gap-4">
@@ -57,7 +57,7 @@
                 </div>
             </div>
 
-            <div class=" flex flex-col w-full max-w-[380px] h-[600px]">
+            <div class=" flex flex-col w-full max-w-[380px] min-h-[500px] py-4">
                 <div class="w-full h-[300px]  flex items-center justify-center overflow-hidden rounded-lg shadow-md">
                     <img src="{{ URL::asset('images/developer2.jpg') }}"
                         alt="Foto do Desenvolvedor"
@@ -89,7 +89,7 @@
                 </div>
             </div>
 
-            <div class="flex flex-col w-full max-w-[380px] h-[600px]">
+            <div class="flex flex-col w-full max-w-[380px] min-h-[500px] py-4">
                 <div class="w-full h-[300px]  flex items-center justify-center overflow-hidden rounded-lg shadow-md">
                     <img src="{{ URL::asset('images/developer3.jpg') }}"
                         alt="Foto do Desenvolvedor"
