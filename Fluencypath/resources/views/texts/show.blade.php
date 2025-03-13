@@ -12,13 +12,12 @@
             <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
                 <li>
                     <div class="flex items-center">
-                        <a href="{{route('texts.index')}}" class="ms-1 font-primary font-medium text-sm text-neutral-400 md:ms-2 dark:hover:text-neutral-300">Textos</a>
+                     
                     </div>
                 </li>
                 <li aria-current="page">
                     <div class="flex items-center">
-                        <x-heroicon-s-chevron-right class="w-5 h-4 text-neutral-300" />
-                        <span class="ms-1 font-primary font-medium text-sm text-neutral-400 md:ms-2">Erro kkk</span>
+                       
                     </div>
                 </li>
             </ol>
