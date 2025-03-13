@@ -18,8 +18,8 @@
         </ol>
     </nav>
 
-@if ($errors->any())
-    <div class="bg-red-500 text-white p-3 rounded-lg">
+    @if ($errors->any())
+    <div class="bg-secondary-500 text-primary-100 my-3 p-3 rounded-lg">
         <ul>
             @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
@@ -74,22 +74,22 @@
                 </form>
             </div>
         </div>
-    </section>
+</section>
 
-    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css">
-    <script>
-        const predefinedTags = ["Educação", "Música", "Ciência", "Saúde", "Tecnologia", "História", "Literatura", "Arte", "Filosofia", "Psicologia", "Esportes", "Negócios", "Economia", "Política", "Meio Ambiente", "Entretenimento", "Cinema", "Teatro", "Religião", "Espiritualidade", "Viagens", "Gastronomia", "Direito", "Matemática", "Astronomia", "Física", "Química", "Biologia", "Sociologia", "Linguística", "Programação", "Jogos", "Autodesenvolvimento", "Poesia", "Fotografia", "Meditação", "Moda", "Bem-estar", "Notícias", "Inovação", "Marketing", "Finanças", "Arquitetura", "Agricultura", "Inteligência Artificial", "Robótica", "Segurança da Informação", "Podcasts", "Curiosidades", "Cultura Pop", "Outros"]
-        const input = document.querySelector('#tags-input');
-        const tagify = new Tagify(input, {
-            whitelist: predefinedTags,
-            enforceWhitelist: false,
-            dropdown: {
-                enabled: 1,
-            },
-        });
-    </script>
+<script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css">
+<script>
+    const predefinedTags = ["Educação", "Música", "Ciência", "Saúde", "Tecnologia", "História", "Literatura", "Arte", "Filosofia", "Psicologia", "Esportes", "Negócios", "Economia", "Política", "Meio Ambiente", "Entretenimento", "Cinema", "Teatro", "Religião", "Espiritualidade", "Viagens", "Gastronomia", "Direito", "Matemática", "Astronomia", "Física", "Química", "Biologia", "Sociologia", "Linguística", "Programação", "Jogos", "Autodesenvolvimento", "Poesia", "Fotografia", "Meditação", "Moda", "Bem-estar", "Notícias", "Inovação", "Marketing", "Finanças", "Arquitetura", "Agricultura", "Inteligência Artificial", "Robótica", "Segurança da Informação", "Podcasts", "Curiosidades", "Cultura Pop", "Outros"]
+    const input = document.querySelector('#tags-input');
+    const tagify = new Tagify(input, {
+        whitelist: predefinedTags,
+        enforceWhitelist: false,
+        dropdown: {
+            enabled: 1,
+        },
+    });
+</script>
 
-    </div>
+</div>
 
-    @endsection
+@endsection

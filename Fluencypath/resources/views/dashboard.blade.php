@@ -82,7 +82,7 @@
         @endif
     </section>
 
-    <section class="py-3">
+    <section class="py-6">
         <h1 class="font-primary font-medium text-2xl text-primary-1000 py-8">Meus Textos</h1>
         <div class="items-center justify-center grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             @if ($userTexts->isEmpty())
@@ -142,10 +142,10 @@
             </article>
             @endforeach
             @endif
+            </div>
             <div class="w-full flex justify-end mt-2 px-14">
                 <a href="{{ route('favorites.index') }}" class="text-center text-primary-1000 font-medium">Ver mais</a>
             </div>
-        </div>
     </section>
 
     <section class="pt-3 pb-14">
