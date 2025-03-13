@@ -29,7 +29,7 @@
                 <h3 class="font-primary font-medium text-2xl text-neutral-600">{{ $texts->title }}</h3>
 
                 <div class="inline-flex items-end justify-end gap-2">
-                    <div class="w-[60px] h-[30px] flex items-center justify-center bg-primary-200 border border-neutral-100 rounded">
+                    <div class="w-[60px] h-[40px] flex items-center justify-center bg-primary-200 border border-neutral-100 rounded">
                         <button
                             class="favorite-btn flex items-center space-x-2"
                             data-text-id="{{ $texts->id }}"
