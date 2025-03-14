@@ -22,7 +22,19 @@ class User extends Authenticatable
         'email',
         'password',
         'google_id',
+        'is_admin',
     ];
+
+    public function texts()
+    {
+        return $this->hasMany(Text::class, 'idUser');
+    }
+
+    public function favorites()
+    {
+        return $this->belongsToMany(Text::class, 'favorites', 'user_id', 'text_id');
+
+    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -45,5 +57,10 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function profilePicture()
+    {
+        return $this->hasOne(ProfilePicture::class);
     }
 }
