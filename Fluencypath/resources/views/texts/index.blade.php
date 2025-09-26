@@ -1,11 +1,53 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="h-[300px] bg-neutral-200 mb-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-10 lg:px-10">
+<section class="h-[300px] bg-secondary-300 mb-10 flex items-center">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 w-full">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+      
+      <!-- Coluna da esquerda -->
+      <div class="flex flex-col space-y-4">
+        <!-- Ícones -->
+        <div class="flex space-x-6 text-primary-400 text-2xl">
+          <span class="m-1">
+            <x-heroicon-s-speaker-wave class="w-6 h-6 text-primary-400" />
+          </span>
+          <span class="m-1">
+            <x-heroicon-s-chat-bubble-left-right class="w-6 h-6 text-primary-400" />
+          </span>
+          <span class="m-1">
+            <x-heroicon-s-book-open class="w-6 h-6 text-primary-400" />
+          </span>
+        </div>
+
+        <!-- Texto -->
+        <h2 class="text-xl md:text-2xl font-bold text-cyan-900">
+          DOMINE O INGLÊS DE VERDADE
+        </h2>
+        <p class="text-cyan-900/90 leading-relaxed max-w-md">
+          Textos multitemáticos e de diferentes níveis <br>
+          para você aprender no seu ritmo, <br>
+          com áudios em inglês para facilitar o seu estudo.
+        </p>
+      </div>
+
+      <!-- Coluna da direita -->
+      <div class="relative flex justify-center md:justify-end">
+        <!-- <div class="bg-gradient-to-tr from-cyan-400 to-cyan-600 rounded-tl-[80px] p-4 flex items-center justify-center"> -->
+          <img 
+            src="{{URL::asset('images/girl-study.png')}}" 
+            alt="banner" 
+            class="rounded-lg object-cover h-[300px] w-auto "
+          >
+        <!-- </div> -->
+      </div>
 
     </div>
+  </div>
 </section>
+
+
+
 
 <section class="max-w-7xl mx-auto px-4 sm:px-10 lg:px-10">
     <header class="flex justify-between">
